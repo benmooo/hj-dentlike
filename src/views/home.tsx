@@ -5,7 +5,7 @@ export default defineComponent({
     return () => (
       <main>
         <div >
-          <h1>Welcome to the Home Page</h1>
+          <h1 class={"text-red-500"}>Welcome to the Home Page</h1>
           <p>This is the home page of the application.</p>
         </div>
       </main>
