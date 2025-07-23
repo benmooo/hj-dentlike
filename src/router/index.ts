@@ -17,6 +17,12 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/about'),
     },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/auth/login'),
+    },
+
   ],
 })
 
