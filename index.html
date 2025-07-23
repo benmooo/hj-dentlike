@@ -7,7 +7,8 @@
     <title>Vite App</title>
   </head>
   <body>
-    <div id="app"></div>
+     <!-- 'isolate' ensures styles are scoped to your app and prevents issues with overlays and stacking contexts. -->
+    <div id="app" class="isolate"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

@@ -8,7 +8,6 @@ export default defineComponent({
     return () => (
       <div>
         <header>
-
           <div class="wrapper">
             <HelloWorld msg="You did it!" />
 

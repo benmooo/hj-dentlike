@@ -6,6 +6,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 import tailwindcss from '@tailwindcss/vite'
+import ui from '@nuxt/ui/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -14,10 +15,19 @@ export default defineConfig({
     vueJsx(),
     vueDevTools(),
     tailwindcss(),
+    ui({
+      // prefix: 'Nuxt',
+      ui: {
+        colors: {
+          primary: 'lime',
+          neutral: 'zinc',
+        },
+      },
+    }),
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
 })
