@@ -18,11 +18,28 @@ const router = createRouter({
       component: () => import('../views/about'),
     },
     {
-      path: '/login',
+      path: '/auth/login',
       name: 'login',
-      component: () => import('../views/auth/login'),
+      component: () => import('../views/auth/login/login'),
     },
 
+    {
+      path: '/auth/reset-password/verify-email',
+      name: 'reset-password-verify-email',
+      component: () => import('../views/auth/reset-password/verify-email'),
+    },
+
+    {
+      path: '/auth/reset-password/verify-otp',
+      name: 'reset-password-verify-otp',
+      component: () => import('../views/auth/reset-password/verify-otp'),
+    },
+
+    {
+      path: '/auth/reset-password/confirm',
+      name: 'reset-password-confirm',
+      component: () => import('../views/auth/reset-password/reset-pwd-confirm'),
+    },
   ],
 })
 

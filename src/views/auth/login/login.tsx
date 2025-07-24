@@ -1,33 +1,34 @@
-import { defineComponent, ref } from 'vue'
+import { defineComponent, reactive } from 'vue'
 import UForm from '@nuxt/ui/components/Form.vue'
 import UFormField from '@nuxt/ui/components/FormField.vue'
 import UInput from '@nuxt/ui/components/Input.vue'
 import UButton from '@nuxt/ui/components/Button.vue'
-import UCheckbox from '@nuxt/ui/components/Checkbox.vue'
+import UIcon from '@nuxt/ui/components/Icon.vue'
 import UAvatar from '@nuxt/ui/components/Avatar.vue'
+import type { FormSubmitEvent } from '@nuxt/ui'
+import { loginPayload, type LoginPayload } from './types'
 
 export default defineComponent({
-  name: 'ModernLoginPage',
+  name: 'LoginPage',
   setup() {
-    const state = ref({
-      email: '',
-      password: '',
-      remember: false,
-    })
+    const state = reactive({ email: '', password: '' })
 
-    // This is a placeholder for form submission logic.
-    function onSubmit(event: object) {
-      console.log(typeof event)
+    // const toast = useToast()
+    const onSubmit = (event: FormSubmitEvent<LoginPayload>) => {
       console.log('Form submitted with:', event.data)
       alert(
-        `Logging in with:\nEmail: ${state.value.email}\nPassword: ${'*'.repeat(state.value.password.length)}`,
+        `Logging in with:\nEmail: ${state.email}\nPassword: ${'*'.repeat(state.password.length)}`,
       )
     }
 
+    const clearEmail = () => {
+      state.email = ''
+    }
+
     return () => (
-      <div class="min-h-screen flex text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900">
+      <div class="min-h-screen flex">
         {/* Left branding column - hidden on screens smaller than lg */}
-        <div class="w-1/2 hidden lg:flex items-center justify-center bg-gray-50 dark:bg-gray-800/50 p-12 relative overflow-hidden">
+        <div class="w-1/2 hidden lg:flex items-center justify-center bg-neutral-50 dark:bg-neutral-800/50 p-12 relative overflow-hidden">
           {/* Decorative background shapes */}
           <div class="absolute top-0 left-0 -translate-x-1/4 -translate-y-1/4 w-96 h-96 rounded-full bg-primary-100 dark:bg-primary-900/50 opacity-50" />
           <div class="absolute bottom-0 right-0 translate-x-1/4 translate-y-1/4 w-96 h-96 rounded-full bg-primary-100 dark:bg-primary-900/50 opacity-50" />
@@ -47,29 +48,41 @@ export default defineComponent({
         <div class="w-full lg:w-1/2 flex items-center justify-center p-8 sm:p-12">
           <div class="w-full max-w-md">
             <div class="text-center lg:text-left mb-10">
-              <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Welcome Back
-              </h1>
-              <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                Please enter your credentials to sign in.
-              </p>
+              <h1 class="text-3xl font-bold tracking-tight">Welcome Back</h1>
+              <p class="mt-2 text-sm text-muted">Please enter your credentials to sign in.</p>
             </div>
 
-            <UForm state={state.value} onSubmit={onSubmit} class="space-y-6">
+            <UForm state={state} schema={loginPayload} onSubmit={onSubmit} class="space-y-6">
               <UFormField label="Email address" name="email" required>
                 <UInput
-                  v-model={state.value.email}
-                  icon="i-heroicons-envelope"
+                  v-model={state.email}
+                  leadingIcon="i-heroicons-envelope"
                   placeholder="you@example.com"
                   size="lg"
                   class={'w-full'}
-                  // ui={{ icon: { trailing: { pointer: '' } } }}
-                />
+                  // loading
+                  loading-icon="i-lucide-loader"
+                  ui={{ trailing: 'pe-1' }}
+                >
+                  {{
+                    trailing: () =>
+                      state.email.length > 0 && (
+                        <UButton
+                          color="neutral"
+                          variant="link"
+                          size="sm"
+                          icon="i-lucide-circle-x"
+                          aria-label="Clear input"
+                          onClick={clearEmail}
+                        />
+                      ),
+                  }}
+                </UInput>
               </UFormField>
 
               <UFormField label="Password" name="password" required>
                 <UInput
-                  v-model={state.value.password}
+                  v-model={state.password}
                   type="password"
                   icon="i-heroicons-lock-closed"
                   placeholder="Enter your password"
@@ -79,8 +92,8 @@ export default defineComponent({
                 />
               </UFormField>
 
-              <div class="flex items-center justify-between">
-                <UCheckbox v-model={state.value.remember} name="remember" label="Remember me" />
+              <div class="flex items-center justify-end">
+                {/* <UCheckbox v-model={state.remember} name="remember" label="Remember me" /> */}
                 <div class="text-sm">
                   <a href="#" class="font-semibold text-primary-600 hover:text-primary-500">
                     Forgot password?
@@ -90,28 +103,22 @@ export default defineComponent({
 
               <UButton type="submit" color="primary" block size="lg" label="Sign In" />
 
-              <div class="relative my-6">
-                <div class="absolute inset-0 flex items-center">
-                  <div class="w-full border-t border-gray-300 dark:border-gray-700" />
-                </div>
-                <div class="relative flex justify-center text-sm">
-                  <span class="px-2 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-400">
-                    Or continue with
-                  </span>
-                </div>
+              <div class="my-6 flex items-center">
+                <div class="w-full border-t border-muted" />
+                <div class="text-sm px-2 text-muted flex-shrink-0">Or continue with</div>
+                <div class="w-full border-t border-muted" />
               </div>
 
               <UButton
                 icon="i-logos-google-icon"
                 label="Sign in with Google"
                 variant="outline"
-                // color="gray"
                 block
                 size="lg"
               />
             </UForm>
 
-            <p class="mt-8 text-sm text-center text-gray-500 dark:text-gray-400">
+            <p class="mt-8 text-sm text-center text-dimmed">
               Don't have an account?{' '}
               <a href="#" class="font-semibold text-primary-600 hover:text-primary-500">
                 Sign up
