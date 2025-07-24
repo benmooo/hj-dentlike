@@ -7,11 +7,14 @@ import UIcon from '@nuxt/ui/components/Icon.vue'
 import UAvatar from '@nuxt/ui/components/Avatar.vue'
 import type { FormSubmitEvent } from '@nuxt/ui'
 import { loginPayload, type LoginPayload } from './types'
+import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   name: 'LoginPage',
   setup() {
     const state = reactive({ email: '', password: '' })
+
+    const { t } = useI18n()
 
     // const toast = useToast()
     const onSubmit = (event: FormSubmitEvent<LoginPayload>) => {
@@ -35,7 +38,7 @@ export default defineComponent({
 
           <div class="max-w-md z-10">
             <h2 class="text-4xl font-bold text-gray-900 dark:text-white">
-              Your Smile, Our Passion
+              Your Smile, Our Passion, {t('app.name')}
             </h2>
             <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
               Access your personalized dental care plan and connect with top specialists. We're
@@ -48,12 +51,12 @@ export default defineComponent({
         <div class="w-full lg:w-1/2 flex items-center justify-center p-8 sm:p-12">
           <div class="w-full max-w-md">
             <div class="text-center lg:text-left mb-10">
-              <h1 class="text-3xl font-bold tracking-tight">Welcome Back</h1>
-              <p class="mt-2 text-sm text-muted">Please enter your credentials to sign in.</p>
+              <h1 class="text-3xl font-bold tracking-tight">{t('loginPage.title')}</h1>
+              <p class="mt-2 text-sm text-muted">{t('loginPage.subtitle')}</p>
             </div>
 
             <UForm state={state} schema={loginPayload} onSubmit={onSubmit} class="space-y-6">
-              <UFormField label="Email address" name="email" required>
+              <UFormField label={t('loginPage.emailLabel')} name="email" required>
                 <UInput
                   v-model={state.email}
                   leadingIcon="i-heroicons-envelope"
@@ -80,7 +83,7 @@ export default defineComponent({
                 </UInput>
               </UFormField>
 
-              <UFormField label="Password" name="password" required>
+              <UFormField label={t('loginPage.passwordLabel')} name="password" required>
                 <UInput
                   v-model={state.password}
                   type="password"
@@ -95,13 +98,19 @@ export default defineComponent({
               <div class="flex items-center justify-end">
                 {/* <UCheckbox v-model={state.remember} name="remember" label="Remember me" /> */}
                 <div class="text-sm">
-                  <a href="#" class="font-semibold text-primary-600 hover:text-primary-500">
-                    Forgot password?
+                  <a href="#" class="text-primary-600 hover:text-primary-500">
+                    {t('loginPage.forgotPassword')}
                   </a>
                 </div>
               </div>
 
-              <UButton type="submit" color="primary" block size="lg" label="Sign In" />
+              <UButton
+                type="submit"
+                color="primary"
+                block
+                size="lg"
+                label={t('loginPage.loginButton')}
+              />
 
               <div class="my-6 flex items-center">
                 <div class="w-full border-t border-muted" />
@@ -119,9 +128,9 @@ export default defineComponent({
             </UForm>
 
             <p class="mt-8 text-sm text-center text-dimmed">
-              Don't have an account?{' '}
+              {t('loginPage.haveNoAccount')}{' '}
               <a href="#" class="font-semibold text-primary-600 hover:text-primary-500">
-                Sign up
+                {t('loginPage.signUpLink')}
               </a>
             </p>
           </div>

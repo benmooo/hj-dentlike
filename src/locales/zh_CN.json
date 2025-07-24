@@ -1,0 +1,24 @@
+{
+  "app": {
+    "name": "麦德思贝",
+    "version": "1.0.0"
+  },
+
+  "common": {
+    "submit": "提交",
+    "cancel": "取消",
+    "save": "保存",
+    "delete": "删除"
+  },
+  "loginPage": {
+    "title": "欢迎回来",
+    "subtitle": "请输入您的凭证以登录",
+    "emailLabel": "邮箱",
+    "passwordLabel": "密码",
+
+    "forgotPassword": "忘记密码？",
+    "loginButton": "登录",
+    "haveNoAccount": "没有账号？",
+    "signUpLink": "注册"
+  }
+}

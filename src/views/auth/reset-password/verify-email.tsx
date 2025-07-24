@@ -52,7 +52,7 @@ export default defineComponent({
 
             <div class="text-center mt-4">
               <RouterLink
-                to="/login"
+                to="/auth/login"
                 class="inline-flex items-center text-sm text-muted hover:text-primary-500"
               >
                 Back to log in
