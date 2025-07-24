@@ -64,7 +64,7 @@ export default defineComponent({
             <UButton type="submit" color="primary" block size="lg" label="Reset Password" />
 
             <div class="text-sm text-center">
-              <a href="/auth/login" class="font-semibold text-primary-600 hover:text-primary-500">
+              <a href="/auth/login" class="text-muted hover:text-primary-500">
                 Back to Sign In
               </a>
             </div>

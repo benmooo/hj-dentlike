@@ -67,7 +67,7 @@ export default defineComponent({
             <div class="text-sm text-center">
               <a
                 href="/auth/login"
-                class="inline-flex items-center text-sm text-muted hover:text-primary-500 font-semibold"
+                class="inline-flex items-center text-sm text-muted hover:text-primary-500"
               >
                 Back to log in
               </a>
