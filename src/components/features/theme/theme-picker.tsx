@@ -109,7 +109,7 @@ export default defineComponent({
       <UCard>
         <div class="space-y-4 -my-2 w-64">
           <div>
-            <h3 class="text-xs mb-2 font-semibold">Primary</h3>
+            <h3 class="text-xs mb-2 font-semibold text-[11px]">Primary</h3>
             <div class="grid grid-cols-3 gap-1 -mx-2">
               {PRIMARY_COLORS.map(({ name, value }) => (
                 <UButton
@@ -121,14 +121,14 @@ export default defineComponent({
                   aria-label={`Select primary color ${name}`}
                 >
                   <span class={['w-2 h-2 rounded-full mr-1', colorClasses[value]]}></span>
-                  <span class={'truncate'}>{name}</span>
+                  <span class={'truncate text-[11px]'}>{name}</span>
                 </UButton>
               ))}
             </div>
           </div>
 
           <div>
-            <h3 class="text-xs mb-2 font-semibold">Neutral</h3>
+            <h3 class="text-xs mb-2 font-semibold text-[11px]">Neutral</h3>
             <div class="grid grid-cols-3 gap-1 -mx-2">
               {NEUTRAL_COLORS.map(({ name, value }) => (
                 <UButton
@@ -139,22 +139,23 @@ export default defineComponent({
                   onClick={() => setNeutralColor(value)}
                 >
                   <span class={['w-2 h-2 rounded-full mr-1', colorClasses[value]]}></span>
-                  <span class={'truncate'}>{name}</span>
+                  <span class={'truncate text-[11px]'}>{name}</span>
                 </UButton>
               ))}
             </div>
           </div>
 
           <div>
-            <h3 class="text-xs mb-2 font-semibold">Radius</h3>
+            <h3 class="text-xs mb-2 font-semibold text-[11px]">Radius</h3>
             <div class="flex items-center gap-1 -mx-2">
               {RADIUS_VALUES.map(({ label, value }) => (
                 <UButton
                   key={`radius-${label}`}
+                  size="sm"
                   color="neutral"
                   variant={state.radius === value ? 'soft' : 'outline'}
                   onClick={() => setRadius(value)}
-                  class={'flex-1 justify-center px-0'}
+                  class={'flex-1 justify-center text-[11px]'}
                 >
                   {label}
                 </UButton>
@@ -163,7 +164,7 @@ export default defineComponent({
           </div>
 
           <div>
-            <h3 class="text-xs mb-2 font-semibold">Theme</h3>
+            <h3 class="text-xs mb-2 font-semibold text-[11px]">Theme</h3>
             <div class="flex items-center gap-1 -mx-2">
               {THEME_MODES.map(({ label, value, icon }) => (
                 <UButton
@@ -174,7 +175,7 @@ export default defineComponent({
                   icon={icon}
                   label={label}
                   onClick={() => setThemeMode(value as 'light' | 'dark' | 'auto')}
-                  class={'flex-1'}
+                  class={'flex-1 text-[11px]'}
                 />
               ))}
             </div>

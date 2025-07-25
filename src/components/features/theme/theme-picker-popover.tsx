@@ -14,7 +14,7 @@ export default defineComponent({
     }
 
     return () => (
-      <UPopover arrow open={open.value} onUpdate:open={(value) => (open.value = value)}>
+      <UPopover arrow open={open.value} onUpdate:open={(value) => (open.value = value)} content={{sideOffset: 4}}>
         {{
           default: () => null,
           anchor: () => (
