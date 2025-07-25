@@ -27,7 +27,7 @@ export default defineComponent({
       <div class="min-h-screen flex items-center justify-center px-4">
         <div class="w-full max-w-sm">
           <div class="flex flex-col items-center mb-6">
-            {/* <UIcon name="i-lucide-lightbulb" class="size-5" /> */}
+            <UButton icon="i-lucide-key-round" variant="ghost" color="neutral" size="xl" disabled />
 
             <h1 class="text-2xl font-semibold mb-2">Forgot password?</h1>
             <p class="text-sm text-gray-600 dark:text-gray-400 text-center">

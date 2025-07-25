@@ -32,6 +32,7 @@ export default defineComponent({
       <div class="min-h-screen flex items-center justify-center px-4">
         <div class="w-full max-w-sm">
           <div class="flex flex-col items-center mb-6">
+            <UButton icon="i-lucide-key-round" variant="ghost" color="neutral" size="xl" disabled />
             <h1 class="text-3xl font-bold tracking-tight mb-2">Set a New Password</h1>
             <p class="text-sm text-muted text-center mb-4">
               Your new password must be at least 8 characters long.
