@@ -4,10 +4,8 @@ import UApp from '@nuxt/ui/components/App.vue'
 import UButton from '@nuxt/ui/components/Button.vue'
 import * as locales from '@nuxt/ui/locale'
 import { useI18n } from 'vue-i18n'
-
-import { fr } from '@nuxt/ui/locale'
-
 import { useColorMode } from '@vueuse/core'
+import ThemePickerPopover from './components/features/theme/theme-picker-popover'
 
 export default defineComponent({
   name: 'App',
@@ -52,6 +50,8 @@ export default defineComponent({
                   variant="ghost"
                   onClick={changeLocale}
                 />
+
+                <ThemePickerPopover />
               </nav>
             </div>
           </header>

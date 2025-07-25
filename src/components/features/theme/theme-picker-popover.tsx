@@ -1,0 +1,33 @@
+import { defineComponent, ref } from 'vue'
+import UPopover from '@nuxt/ui/components/Popover.vue'
+import UButton from '@nuxt/ui/components/Button.vue'
+import ThemePicker from './theme-picker'
+
+export default defineComponent({
+  name: 'ThemePickerPopover',
+
+  setup() {
+    const open = ref(false)
+
+    const onClick = () => {
+      open.value = !open.value
+    }
+
+    return () => (
+      <UPopover arrow open={open.value} onUpdate:open={(value) => (open.value = value)}>
+        {{
+          default: () => null,
+          anchor: () => (
+            <UButton
+              icon="i-lucide-swatch-book"
+              color="primary"
+              variant="ghost"
+              onClick={onClick}
+            ></UButton>
+          ),
+          content: () => <ThemePicker />,
+        }}
+      </UPopover>
+    )
+  },
+})
