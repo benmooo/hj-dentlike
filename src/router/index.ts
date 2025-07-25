@@ -40,6 +40,12 @@ const router = createRouter({
       name: 'reset-password-confirm',
       component: () => import('../views/auth/reset-password/reset-pwd-confirm'),
     },
+
+    {
+      path: '/auth/signup',
+      name: 'signup',
+      component: () => import('../views/auth/signup/signup'),
+    },
   ],
 })
 

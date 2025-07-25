@@ -34,6 +34,7 @@ export default defineComponent({
                 <RouterLink to="/about">About</RouterLink>
 
                 <RouterLink to="/auth/login">Login</RouterLink>
+                <RouterLink to="/auth/signup">Signup</RouterLink>
                 <RouterLink to="/auth/reset-password/verify-email">Reset Password</RouterLink>
                 <RouterLink to="/auth/reset-password/verify-otp">Verify OTP</RouterLink>
                 <RouterLink to="/auth/reset-password/confirm">Confirm Password</RouterLink>

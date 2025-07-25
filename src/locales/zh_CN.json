@@ -20,5 +20,26 @@
     "loginButton": "登录",
     "haveNoAccount": "没有账号？",
     "signUpLink": "注册"
+  },
+
+  "signupPage": {
+    "sidePanelTitle": "加入牙科护理的未来",
+    "sidePanelSubtitle": "创建您的账户以管理诊所，连接患者，并通过我们的先进工具简化您的工作流程。",
+    "title": "创建账户",
+    "subtitle": "请填写以下表格以开始使用。",
+    "nameLabel": "您的姓名",
+    "emailLabel": "邮箱地址",
+    "phoneLabel": "电话号码",
+    "practiceNameLabel": "诊所名称",
+    "passwordLabel": "密码",
+    "passwordConfirmationLabel": "确认密码",
+    "addressLabel": "地址",
+    "suburbLabel": "地区",
+    "stateLabel": "省 / 市",
+    "postcodeLabel": "邮编",
+    "countryLabel": "国家 / 地区",
+    "submitButton": "创建账户",
+    "haveAccount": "已经有账号？",
+    "loginLink": "登录"
   }
 }

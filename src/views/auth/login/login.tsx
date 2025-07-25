@@ -129,7 +129,7 @@ export default defineComponent({
 
             <p class="mt-8 text-sm text-center text-dimmed">
               {t('loginPage.haveNoAccount')}{' '}
-              <a href="#" class="font-semibold text-primary-600 hover:text-primary-500">
+              <a href="/auth/signup" class="font-semibold text-primary-600 hover:text-primary-500">
                 {t('loginPage.signUpLink')}
               </a>
             </p>

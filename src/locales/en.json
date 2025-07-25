@@ -19,5 +19,25 @@
     "loginButton": "Sign In",
     "haveNoAccount": "Don't have an account?",
     "signUpLink": "Sign Up"
+  },
+  "signupPage": {
+    "sidePanelTitle": "Join the Future of Dental Care",
+    "sidePanelSubtitle": "Create your account to manage your practice, connect with patients, and streamline your workflow with our advanced tools.",
+    "title": "Create an Account",
+    "subtitle": "Fill out the form below to get started.",
+    "nameLabel": "Your Name",
+    "emailLabel": "Email address",
+    "phoneLabel": "Phone Number",
+    "practiceNameLabel": "Practice Name",
+    "passwordLabel": "Password",
+    "passwordConfirmationLabel": "Confirm Password",
+    "addressLabel": "Address",
+    "suburbLabel": "Suburb",
+    "stateLabel": "State / Province",
+    "postcodeLabel": "Post code / Zip code",
+    "countryLabel": "Country / Region",
+    "submitButton": "Create Account",
+    "haveAccount": "Already have an account?",
+    "loginLink": "Log In"
   }
 }
