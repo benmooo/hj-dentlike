@@ -8,7 +8,7 @@ import UButton from '@nuxt/ui/components/Button.vue'
 import UTextarea from '@nuxt/ui/components/Textarea.vue'
 import USelectMenu from '@nuxt/ui/components/SelectMenu.vue'
 import { signupPayload, type SignupPayload } from './types'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import StyledRouterLink, {
   routerLinkStyleMuted,
   routerLinkStylePrimary,
@@ -41,9 +41,13 @@ export default defineComponent({
       { label: 'United States', value: 'US' },
     ]
 
+    const router = useRouter()
+
     const onSubmit = (event: FormSubmitEvent<SignupPayload>) => {
       console.log('Form submitted with:', event.data)
       alert('Account created successfully!')
+
+      router.push('/auth/login')
     }
 
     return () => (

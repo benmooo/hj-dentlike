@@ -5,8 +5,10 @@ import UButton from '@nuxt/ui/components/Button.vue'
 import UPinInput from '@nuxt/ui/components/PinInput.vue'
 import type { FormSubmitEvent } from '@nuxt/ui'
 import { otpSchema, type OTPSchema } from './types'
-import { RouterLink } from 'vue-router'
-import StyledRouterLink, { routerLinkStyleMuted } from '@/components/features/common/styled-router-link'
+import { RouterLink, useRouter } from 'vue-router'
+import StyledRouterLink, {
+  routerLinkStyleMuted,
+} from '@/components/features/common/styled-router-link'
 
 export default defineComponent({
   name: 'VerifyOtpPage',
@@ -15,11 +17,13 @@ export default defineComponent({
       otp: [] as number[],
     })
 
+    const router = useRouter()
+
     const onSubmit = (event: FormSubmitEvent<OTPSchema>) => {
       console.log('Verifying OTP:', event.data.otp)
       alert(`OTP ${state.otp} verified successfully!`)
       // Add real API call and navigate to next step here
-      // e.g. router.push('/auth/reset-password/reset-pwd-confirm')
+      router.push('/auth/reset-password/confirm')
     }
 
     const handleResend = () => {

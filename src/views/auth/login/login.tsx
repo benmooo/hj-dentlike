@@ -8,7 +8,7 @@ import UAvatar from '@nuxt/ui/components/Avatar.vue'
 import type { FormSubmitEvent } from '@nuxt/ui'
 import { loginPayload, type LoginPayload } from './types'
 import { useI18n } from 'vue-i18n'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import StyledRouterLink, {
   routerLinkStylePrimary,
 } from '@/components/features/common/styled-router-link'
@@ -19,13 +19,18 @@ export default defineComponent({
     const state = reactive({ email: '', password: '' })
 
     const { t } = useI18n()
+    const router = useRouter()
+    const toast = useToast()
 
-    // const toast = useToast()
     const onSubmit = (event: FormSubmitEvent<LoginPayload>) => {
       console.log('Form submitted with:', event.data)
-      alert(
-        `Logging in with:\nEmail: ${state.email}\nPassword: ${'*'.repeat(state.password.length)}`,
-      )
+      toast.add({
+        color: 'info',
+        title: 'Bingo!',
+        description: `Logging in with:\nEmail: ${state.email}\nPassword: ${'*'.repeat(state.password.length)}`,
+      })
+
+      router.push('/client/home')
     }
 
     const clearEmail = () => {

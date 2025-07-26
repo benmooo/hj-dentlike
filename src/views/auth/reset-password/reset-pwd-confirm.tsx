@@ -5,9 +5,9 @@ import UInput from '@nuxt/ui/components/Input.vue'
 import UButton from '@nuxt/ui/components/Button.vue'
 import type { FormSubmitEvent } from '@nuxt/ui'
 import { resetPasswordPayload, type ResetPasswordPayload } from './types'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import StyledRouterLink, {
-    routerLinkStyleMuted,
+  routerLinkStyleMuted,
   routerLinkStylePrimary,
 } from '@/components/features/common/styled-router-link'
 
@@ -19,18 +19,15 @@ export default defineComponent({
       passwordConfirm: '',
     })
 
-    // In a real application, you would use Nuxt's useRouter()
-    // const router = useRouter()
+    const router = useRouter()
 
     const onSubmit = (event: FormSubmitEvent<ResetPasswordPayload>) => {
       console.log('New password submitted:', event.data.password)
-      // Here you would call the API to update the password.
-      // On success, navigate the user to the login page.
       alert(
         'Your password has been reset successfully! You can now sign in with your new password.',
       )
       // For demonstration, let's assume navigation after success.
-      // router.push('/auth/login')
+      router.push('/auth/login')
     }
 
     return () => (

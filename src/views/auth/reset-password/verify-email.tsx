@@ -6,7 +6,7 @@ import UButton from '@nuxt/ui/components/Button.vue'
 import UIcon from '@nuxt/ui/components/Icon.vue'
 import type { FormSubmitEvent } from '@nuxt/ui'
 import { emailSchema, type EmailSchema } from './types'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import StyledRouterLink, { routerLinkStyleMuted } from '@/components/features/common/styled-router-link'
 
 export default defineComponent({
@@ -16,12 +16,12 @@ export default defineComponent({
       email: '',
     })
 
+    const router = useRouter()
+
     const onSubmit = (event: FormSubmitEvent<EmailSchema>) => {
       console.log('Form submitted with:', event.data)
       alert(`Reset instructions will be sent to: ${state.email}`)
-      // Here, add your real API call and navigation logic
-      // const router = useRouter()
-      // router.push('/auth/reset-password/verify-otp')
+      router.push('/auth/reset-password/verify-otp')
     }
 
     return () => (
