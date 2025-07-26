@@ -4,16 +4,20 @@
 
 ### Tech stack
 
-- 前端框架: Vue 3
-- 构建工具: Vite
-- UI 框架: Element Plus (支持暗黑模式)
-- 状态管理: Pinia
-- 路由: Vue Router
-- HTTP 请求: Axios
-- 样式: Tailwind CSS
-- 表单校验: Zod
-- Vue 组合式实用工具库: VueUse
-- 函数式编程库: fp-ts
+- vue 3: frontend framework
+- vite: build tool
+- pinia: state management
+- vue router: router
+- axios: http client
+- vueQuery: for data synchronization management
+- nuxt ui: UI component library
+- tailwind css: styling framework
+- vueUse: vue composition utilities
+- fp-ts: functional programming library
+- i18n: Vue I18n
+- valibot | zod: schema validation
+- vue transition: for router transitions
+- ts: typescript
 
 ### 功能模块梳理 (Functional Modules)
 
