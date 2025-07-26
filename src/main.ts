@@ -3,6 +3,7 @@ import { createPinia } from 'pinia'
 import ui from '@nuxt/ui/vue-plugin'
 import { i18n } from './core/config/i18n'
 import '@/assets/style/global.css'
+import '@/assets/style/animation.css'
 
 import App from './app'
 import router from './router'

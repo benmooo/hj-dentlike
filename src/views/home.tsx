@@ -1,5 +1,6 @@
 import { defineComponent } from 'vue'
 import UButton from '@nuxt/ui/components/Button.vue'
+import Sidebar from '@/components/features/sidebar/sidebar'
 
 export default defineComponent({
   name: 'HomeView',
@@ -9,11 +10,15 @@ export default defineComponent({
 })
 
 const view = (
-  <main>
-    <div>
-      <h1 class={'text-red-500'}>Welcome to the Home Page</h1>
-      <p>This is the home page of the application.</p>
-      <UButton variant='soft' onClick={() => console.log('hello')}>Click Me</UButton>
-    </div>
-  </main>
+  <div class={'flex'}>
+    <aside class={'max-h-screen overflow-y-auto'}>
+      <Sidebar />
+    </aside>
+
+    <main class={'max-h-screen w-full overflow-y-scroll'}>
+      <div>
+        <div>hello</div>
+      </div>
+    </main>
+  </div>
 )
