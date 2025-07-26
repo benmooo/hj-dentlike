@@ -5,6 +5,11 @@ import UInput from '@nuxt/ui/components/Input.vue'
 import UButton from '@nuxt/ui/components/Button.vue'
 import type { FormSubmitEvent } from '@nuxt/ui'
 import { resetPasswordPayload, type ResetPasswordPayload } from './types'
+import { RouterLink } from 'vue-router'
+import StyledRouterLink, {
+    routerLinkStyleMuted,
+  routerLinkStylePrimary,
+} from '@/components/features/common/styled-router-link'
 
 export default defineComponent({
   name: 'ResetPasswordConfirmPage',
@@ -65,9 +70,9 @@ export default defineComponent({
             <UButton type="submit" color="primary" block size="lg" label="Reset Password" />
 
             <div class="text-sm text-center">
-              <a href="/auth/login" class="text-muted hover:text-primary-500">
+              <StyledRouterLink to="/auth/login" class={routerLinkStyleMuted}>
                 Back to Sign In
-              </a>
+              </StyledRouterLink>
             </div>
           </UForm>
         </div>

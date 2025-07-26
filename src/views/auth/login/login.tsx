@@ -8,6 +8,10 @@ import UAvatar from '@nuxt/ui/components/Avatar.vue'
 import type { FormSubmitEvent } from '@nuxt/ui'
 import { loginPayload, type LoginPayload } from './types'
 import { useI18n } from 'vue-i18n'
+import { RouterLink } from 'vue-router'
+import StyledRouterLink, {
+  routerLinkStylePrimary,
+} from '@/components/features/common/styled-router-link'
 
 export default defineComponent({
   name: 'LoginPage',
@@ -129,9 +133,9 @@ export default defineComponent({
 
             <p class="mt-8 text-sm text-center text-dimmed">
               {t('loginPage.haveNoAccount')}{' '}
-              <a href="/auth/signup" class="font-semibold text-primary-600 hover:text-primary-500">
+              <StyledRouterLink to="/auth/signup" class={routerLinkStylePrimary}>
                 {t('loginPage.signUpLink')}
-              </a>
+              </StyledRouterLink>
             </p>
           </div>
         </div>

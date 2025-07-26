@@ -5,6 +5,8 @@ import UButton from '@nuxt/ui/components/Button.vue'
 import UPinInput from '@nuxt/ui/components/PinInput.vue'
 import type { FormSubmitEvent } from '@nuxt/ui'
 import { otpSchema, type OTPSchema } from './types'
+import { RouterLink } from 'vue-router'
+import StyledRouterLink, { routerLinkStyleMuted } from '@/components/features/common/styled-router-link'
 
 export default defineComponent({
   name: 'VerifyOtpPage',
@@ -29,7 +31,13 @@ export default defineComponent({
       <div class="min-h-screen flex items-center justify-center px-4">
         <div class="w-full max-w-sm">
           <div class="flex flex-col items-center mb-6">
-            <UButton icon="i-lucide-message-square-more" variant="ghost" color="neutral" size="xl" disabled />
+            <UButton
+              icon="i-lucide-message-square-more"
+              variant="ghost"
+              color="neutral"
+              size="xl"
+              disabled
+            />
 
             <h1 class="text-2xl font-semibold mb-2">Check your email</h1>
             <p class="text-sm text-gray-600 dark:text-gray-400 text-center">
@@ -66,12 +74,9 @@ export default defineComponent({
             </div>
 
             <div class="text-sm text-center">
-              <a
-                href="/auth/login"
-                class="inline-flex items-center text-sm text-muted hover:text-primary-500"
-              >
-                Back to log in
-              </a>
+              <StyledRouterLink to="/auth/login" class={routerLinkStyleMuted}>
+                Back to Sign In
+              </StyledRouterLink>
             </div>
           </UForm>
         </div>

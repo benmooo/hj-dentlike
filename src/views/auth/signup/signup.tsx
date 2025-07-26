@@ -8,6 +8,11 @@ import UButton from '@nuxt/ui/components/Button.vue'
 import UTextarea from '@nuxt/ui/components/Textarea.vue'
 import USelectMenu from '@nuxt/ui/components/SelectMenu.vue'
 import { signupPayload, type SignupPayload } from './types'
+import { RouterLink } from 'vue-router'
+import StyledRouterLink, {
+  routerLinkStyleMuted,
+  routerLinkStylePrimary,
+} from '@/components/features/common/styled-router-link'
 
 export default defineComponent({
   name: 'SignupPage',
@@ -150,7 +155,6 @@ export default defineComponent({
                 />
               </UFormField>
 
-
               <UFormField label={t('signupPage.stateLabel')} name="state" required>
                 <UInput
                   v-model={state.state}
@@ -159,7 +163,6 @@ export default defineComponent({
                   class={'w-full'}
                 />
               </UFormField>
-
 
               <UFormField
                 label={t('signupPage.passwordConfirmationLabel')}
@@ -198,9 +201,9 @@ export default defineComponent({
 
               <p class="md:col-span-2 mt-4 text-sm text-center text-dimmed">
                 {t('signupPage.haveAccount')}{' '}
-                <a href="/auth/login" class="font-semibold text-primary-600 hover:text-primary-500">
+                <StyledRouterLink to="/auth/login" class={routerLinkStylePrimary}>
                   {t('signupPage.loginLink')}
-                </a>
+                </StyledRouterLink>
               </p>
             </UForm>
           </div>

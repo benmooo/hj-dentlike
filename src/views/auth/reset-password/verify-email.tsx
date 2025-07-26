@@ -7,6 +7,7 @@ import UIcon from '@nuxt/ui/components/Icon.vue'
 import type { FormSubmitEvent } from '@nuxt/ui'
 import { emailSchema, type EmailSchema } from './types'
 import { RouterLink } from 'vue-router'
+import StyledRouterLink, { routerLinkStyleMuted } from '@/components/features/common/styled-router-link'
 
 export default defineComponent({
   name: 'VerifyEmailPage',
@@ -50,13 +51,10 @@ export default defineComponent({
 
             <UButton type="submit" color="primary" block size="lg" label="Reset password" />
 
-            <div class="text-center mt-4">
-              <RouterLink
-                to="/auth/login"
-                class="inline-flex items-center text-sm text-muted hover:text-primary-500"
-              >
-                Back to log in
-              </RouterLink>
+            <div class="text-center mt-4 text-sm">
+              <StyledRouterLink to="/auth/login" class={routerLinkStyleMuted}>
+                Back to Sign In
+              </StyledRouterLink>
             </div>
           </UForm>
         </div>
