@@ -6,9 +6,7 @@ import UPinInput from '@nuxt/ui/components/PinInput.vue'
 import type { FormSubmitEvent } from '@nuxt/ui'
 import { otpSchema, type OTPSchema } from './types'
 import { RouterLink, useRouter } from 'vue-router'
-import StyledRouterLink, {
-  routerLinkStyleMuted,
-} from '@/components/features/common/styled-router-link'
+import StyledRouterLink, { routerLinkStyleMuted } from '@/components/common/styled-router-link'
 
 export default defineComponent({
   name: 'VerifyOtpPage',

@@ -5,6 +5,10 @@ import * as TE from 'fp-ts/TaskEither'
 import * as E from 'fp-ts/Either'
 import { pipe } from 'fp-ts/lib/function'
 
+// route based layout
+export const defaultLayout = 'default-layout'
+export const layoutWithSidebar = 'layout-with-sidebar'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -14,6 +18,7 @@ const router = createRouter({
       component: () => import('../views/home'),
       meta: {
         requiresAuth: false,
+        layout: defaultLayout,
       },
     },
     {
@@ -22,6 +27,7 @@ const router = createRouter({
 
       meta: {
         requiresAuth: false,
+        layout: defaultLayout,
       },
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
@@ -33,6 +39,7 @@ const router = createRouter({
       name: 'login',
       meta: {
         requiresAuth: false,
+        layout: defaultLayout,
       },
       component: () => import('../views/auth/login/login'),
     },
@@ -42,6 +49,7 @@ const router = createRouter({
       name: 'reset-password-verify-email',
       meta: {
         requiresAuth: false,
+        layout: defaultLayout,
       },
       component: () => import('../views/auth/reset-password/verify-email'),
     },
@@ -51,6 +59,7 @@ const router = createRouter({
       name: 'reset-password-verify-otp',
       meta: {
         requiresAuth: false,
+        layout: defaultLayout,
       },
       component: () => import('../views/auth/reset-password/verify-otp'),
     },
@@ -60,6 +69,7 @@ const router = createRouter({
       name: 'reset-password-confirm',
       meta: {
         requiresAuth: false,
+        layout: defaultLayout,
       },
       component: () => import('../views/auth/reset-password/reset-pwd-confirm'),
     },
@@ -69,6 +79,7 @@ const router = createRouter({
       name: 'signup',
       meta: {
         requiresAuth: false,
+        layout: defaultLayout,
       },
       component: () => import('../views/auth/signup/signup'),
     },
@@ -78,6 +89,7 @@ const router = createRouter({
       name: 'client-home',
       meta: {
         requiresAuth: true,
+        layout: layoutWithSidebar,
       },
       component: () => import('../views/client/home'),
     },

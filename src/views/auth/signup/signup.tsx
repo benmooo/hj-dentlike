@@ -12,7 +12,7 @@ import { RouterLink, useRouter } from 'vue-router'
 import StyledRouterLink, {
   routerLinkStyleMuted,
   routerLinkStylePrimary,
-} from '@/components/features/common/styled-router-link'
+} from '@/components/common/styled-router-link'
 
 export default defineComponent({
   name: 'SignupPage',

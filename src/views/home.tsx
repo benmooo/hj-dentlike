@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import UButton from '@nuxt/ui/components/Button.vue'
-import Sidebar from '@/components/features/sidebar/sidebar'
+import Sidebar from '@/components/sidebar/sidebar'
 
 export default defineComponent({
   name: 'HomeView',

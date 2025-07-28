@@ -7,7 +7,7 @@ import UIcon from '@nuxt/ui/components/Icon.vue'
 import type { FormSubmitEvent } from '@nuxt/ui'
 import { emailSchema, type EmailSchema } from './types'
 import { RouterLink, useRouter } from 'vue-router'
-import StyledRouterLink, { routerLinkStyleMuted } from '@/components/features/common/styled-router-link'
+import StyledRouterLink, { routerLinkStyleMuted } from '@/components/common/styled-router-link'
 
 export default defineComponent({
   name: 'VerifyEmailPage',

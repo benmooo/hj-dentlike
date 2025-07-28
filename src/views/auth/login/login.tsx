@@ -9,9 +9,7 @@ import type { FormSubmitEvent } from '@nuxt/ui'
 import { loginPayload, type LoginPayload } from './types'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRouter } from 'vue-router'
-import StyledRouterLink, {
-  routerLinkStylePrimary,
-} from '@/components/features/common/styled-router-link'
+import StyledRouterLink, { routerLinkStylePrimary } from '@/components/common/styled-router-link'
 
 export default defineComponent({
   name: 'LoginPage',
