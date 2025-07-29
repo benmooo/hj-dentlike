@@ -14,15 +14,20 @@ export default defineComponent({
     }
 
     return () => (
-      <UPopover arrow open={open.value} onUpdate:open={(value) => (open.value = value)} content={{sideOffset: 4}}>
+      <UPopover
+        arrow
+        open={open.value}
+        onUpdate:open={(value) => (open.value = value)}
+        content={{ sideOffset: 4 }}
+      >
         {{
           default: () => null,
           anchor: () => (
             <UButton
               icon="i-lucide-swatch-book"
-              color="primary"
-              variant="ghost"
+              variant="solid"
               onClick={onClick}
+              class={'rounded-full'}
             ></UButton>
           ),
           content: () => <ThemePicker />,

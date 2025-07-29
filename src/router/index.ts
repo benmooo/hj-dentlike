@@ -93,6 +93,54 @@ const router = createRouter({
       },
       component: () => import('../views/client/home'),
     },
+
+    {
+      path: '/client/create-order',
+      name: 'client-create-order',
+      meta: {
+        requiresAuth: true,
+        layout: layoutWithSidebar,
+      },
+      component: () => import('../views/client/order/create-order/create-order'),
+    },
+
+    {
+      path: '/client/orders',
+      name: 'client-orders',
+      meta: {
+        requiresAuth: true,
+        layout: layoutWithSidebar,
+      },
+      component: () => import('../views/client/order/orders/orders'),
+    },
+
+    {
+      path: '/client/finance/dashboard',
+      name: 'client-finance-dashboard',
+      meta: {
+        requiresAuth: true,
+        layout: layoutWithSidebar,
+      },
+      component: () => import('../views/client/finance/dashboard/dashboard'),
+    },
+    {
+      path: '/client/user/profile',
+      name: 'client-user-profile',
+      meta: {
+        requiresAuth: true,
+        layout: layoutWithSidebar,
+      },
+      component: () => import('../views/client/user/profile/profile'),
+    },
+    {
+      path: '/client/user/settings',
+      name: 'client-user-settings',
+      meta: {
+        requiresAuth: true,
+        layout: layoutWithSidebar,
+      },
+      component: () => import('../views/client/user/settings/settings'),
+    },
   ],
 })
 

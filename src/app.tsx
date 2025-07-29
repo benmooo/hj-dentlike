@@ -8,13 +8,12 @@ import {
   type Component,
 } from 'vue'
 import UApp from '@nuxt/ui/components/App.vue'
-import UButton from '@nuxt/ui/components/Button.vue'
-import * as locales from '@nuxt/ui/locale'
-import { useI18n } from 'vue-i18n'
-import { useColorMode } from '@vueuse/core'
-import ThemePickerPopover from './components/theme/theme-picker-popover'
 import { defaultLayout } from './router'
 import { useRoute } from 'vue-router'
+import DevMenu from '@/components/devtools/dev-menu'
+import * as locales from '@nuxt/ui/locale'
+import { useI18n } from 'vue-i18n'
+import ThemePickerPopover from './components/theme/theme-picker-popover'
 
 // Cache for dynamically loaded layout components.
 // This prevents the layout component from being recreated on every route change,
@@ -34,21 +33,11 @@ const loadLayoutComponent = (layoutName: string) => {
 export default defineComponent({
   name: 'App',
   setup() {
-    const mode = useColorMode()
+    const route = useRoute()
     const { locale } = useI18n()
 
     const getNuxtUILocale = (langCode: string) =>
       locales[langCode as keyof typeof locales] ?? locales.en
-
-    const changeLocale = () => {
-      locale.value = locale.value === 'en' ? 'zh_CN' : 'en'
-    }
-
-    const toggleTheme = () => {
-      mode.value = mode.value === 'dark' ? 'light' : 'dark'
-    }
-
-    const route = useRoute()
 
     const currentLayoutComponent = computed(() => {
       const layoutName = (route.meta.layout || defaultLayout) as string
@@ -60,36 +49,12 @@ export default defineComponent({
 
       return (
         <UApp locale={getNuxtUILocale(locale.value)}>
-          <header>
-            <div class="wrapper">
-              <nav class={'flex gap-4 items-center'}>
-                <RouterLink to="/">Home</RouterLink>
-                <RouterLink to="/about">About</RouterLink>
-                <RouterLink to="/client/home">CHome</RouterLink>
-
-                <RouterLink to="/auth/login">Login</RouterLink>
-                <RouterLink to="/auth/signup">Signup</RouterLink>
-                <RouterLink to="/auth/reset-password/verify-email">Reset Password</RouterLink>
-                <RouterLink to="/auth/reset-password/verify-otp">Verify OTP</RouterLink>
-                <RouterLink to="/auth/reset-password/confirm">Confirm Password</RouterLink>
-
-                <UButton
-                  icon={mode.value === 'dark' ? 'i-lucide-moon' : 'i-lucide-sun'}
-                  color="neutral"
-                  variant="ghost"
-                  onClick={toggleTheme}
-                />
-                <UButton
-                  icon="i-lucide-globe"
-                  color="neutral"
-                  variant="ghost"
-                  onClick={changeLocale}
-                />
-
-                <ThemePickerPopover />
-              </nav>
-            </div>
-          </header>
+          <div class={'fixed right-12 bottom-24'}>
+            <ThemePickerPopover />
+          </div>
+          <div class={'fixed right-12 bottom-12'}>
+            <DevMenu />
+          </div>
 
           <Layout>
             <RouterView>{{ default: withPageTransition('slide-left') }}</RouterView>
