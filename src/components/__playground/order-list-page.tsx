@@ -192,18 +192,19 @@ export default defineComponent({
               <UInput v-model={filters.orderDate} placeholder="录单时间" type="date" />
             </div>
           </div>
+          <div class="flex justify-end gap-3 mt-4">
+            <UButton>查询</UButton>
+            <UButton variant="outline">重置</UButton>
+          </div>
         </div>
 
         {/* Table Section */}
         <div>
-          <div class="flex justify-end items-center gap-2 mb-4">
-            <UButton icon="i-heroicons-plus-circle-solid">新增订单</UButton>
-            <UButton variant="outline" icon="i-lucide-filter-x">
-              重置
+          <div class="flex justify-between items-center mb-4">
+            <UButton size="lg" icon="i-heroicons-plus-circle-solid">
+              新增订单
             </UButton>
-            <UButton variant="outline" icon="i-lucide-download">
-              导出报表
-            </UButton>
+            <UButton variant="outline">导出报表</UButton>
           </div>
 
           <UTable data={orders} />

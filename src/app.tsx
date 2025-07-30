@@ -50,10 +50,10 @@ export default defineComponent({
 
       return (
         <UApp locale={getNuxtUILocale(locale.value)}>
-          <div class={'fixed right-12 bottom-24'}>
+          <div class={'fixed right-12 bottom-24 z-40'}>
             <ThemePickerPopover />
           </div>
-          <div class={'fixed right-12 bottom-12'}>
+          <div class={'fixed right-12 bottom-12 z-40'}>
             <DevMenu />
           </div>
 
