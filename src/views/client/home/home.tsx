@@ -1,4 +1,4 @@
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, resolveComponent } from 'vue'
 
 // Per your instructions, I'm importing Nuxt UI components directly.
 // In a typical Nuxt project, these would often be auto-imported.
@@ -8,12 +8,18 @@ import UTable from '@nuxt/ui/components/Table.vue'
 // import UIcon from '@nuxt/ui/components/Icon.vue'
 import UAvatar from '@nuxt/ui/components/Avatar.vue'
 import UBadge from '@nuxt/ui/components/Badge.vue'
-import UDropdown from '@nuxt/ui/components/DropdownMenu.vue'
+import Table0 from '@/components/__playground/table0'
 
 export default defineComponent({
   name: 'DashboardPage',
   setup() {
     const orderStats = ref([
+      {
+        label: 'Draft Orders',
+        count: 8,
+        icon: 'i-lucide-list-restart',
+        color: 'blue',
+      },
       {
         label: 'Awaiting Receipt',
         count: 2,
@@ -86,8 +92,6 @@ export default defineComponent({
       },
     ])
 
-    // --- Table Column Definitions ---
-
     const incompleteOrdersColumns = [
       { key: 'patient', label: 'Patient', id: '1' },
       { id: '2', key: 'actions' },
@@ -100,39 +104,8 @@ export default defineComponent({
       { key: 'actions' },
     ]
 
-    // Helper for mapping status to colors
-    const statusColors: { [key: string]: any } = {
-      Design: 'blue',
-      Manufacturing: 'amber',
-      QA: 'orange',
-      Shipped: 'green',
-    }
-
-    // Helper for dropdown actions
-    const caseActions = (_row: any) => [
-      [
-        {
-          label: 'View Details',
-          icon: 'i-heroicons-document-magnifying-glass',
-        },
-        {
-          label: 'Edit',
-          icon: 'i-heroicons-pencil-square',
-        },
-      ],
-      [
-        {
-          label: 'Delete',
-          icon: 'i-heroicons-trash-20-solid',
-          class: 'text-red-500 dark:text-red-400',
-        },
-      ],
-    ]
-
-    // --- Render Function ---
-
     return () => (
-      <div class="">
+      <div>
         {/* Header */}
         <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
           <div>
@@ -153,14 +126,13 @@ export default defineComponent({
         </header>
 
         {/* Stats Cards */}
-        <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+        <section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-8">
           {orderStats.value.map((stat) => (
             <UCard key={stat.label}>
               <div class="flex items-start justify-between">
                 <div>
                   <p class="text-sm font-medium text-muted">{stat.label}</p>
                   <p class="text-3xl font-bold mt-1">{stat.count}</p>
-                  {/* <UBadge variant='outline'>{stat.count}</UBadge> */}
                 </div>
                 <div class={`rounded-md p-2 bg-${stat.color}-100 dark:bg-${stat.color}-900/50`}>
                   <UButton icon={stat.icon} variant="link" color="neutral"></UButton>
@@ -174,36 +146,13 @@ export default defineComponent({
         <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left/Main column */}
           <div class="lg:col-span-2 space-y-8">
-            {/* Incomplete Orders */}
-            <UCard class="h-full">
-              {{
-                header: () => (
-                  <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-2">
-                      {/* <UIcon
-                        name="i-heroicons-pencil-square-20-solid"
-                        class="h-5 w-5 text-gray-500 dark:text-gray-400"
-                      /> */}
-                      <h3 class="text-base/6 font-semibold text-gray-900 dark:text-white">
-                        Incomplete Orders
-                      </h3>
-                    </div>
-                    <UBadge variant="subtle">{incompleteOrders.value.length}</UBadge>
-                  </div>
-                ),
-              }}
-              <UTable class="h-full" data={incompleteOrders.value} />
-            </UCard>
-
             {/* Cases In Processing */}
             <UCard>
               {{
                 header: () => (
                   <div class="flex items-center justify-between">
                     <div class="flex items-center gap-2">
-                      <h3 class="text-base/6 font-semibold text-gray-900 dark:text-white">
-                        Cases In Processing
-                      </h3>
+                      <h3 class="text-base/6 font-semibold">Cases In Processing</h3>
                     </div>
                     <UButton
                       label="Search"
@@ -212,40 +161,31 @@ export default defineComponent({
                     />
                   </div>
                 ),
+                default: () => <UTable data={casesInProcessing.value} />,
               }}
-
-              <UTable
-                data={casesInProcessing.value}
-                // columns={casesInProcessingColumns}
-                // rows={casesInProcessing.value}
-                v-slots={{
-                  'patient-cell': ({ row }: { row: any }) => (
-                    <p class="font-medium text-gray-900 dark:text-white">row.patient.name</p>
-                  ),
-                  'status-cell': ({ row }: { row: any }) => (
-                    <UBadge color={statusColors[row.status]} variant="soft">
-                      {row.status}
-                    </UBadge>
-                  ),
-                  'actions-cell': ({ row }: { row: any }) => (
-                    <div class="text-right">
-                      <UDropdown items={caseActions(row)}>
-                        <UButton variant="ghost" icon="i-heroicons-ellipsis-horizontal-20-solid" />
-                      </UDropdown>
+            </UCard>
+            {/* Incomplete Orders */}
+            <UCard>
+              {{
+                header: () => (
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-base/6 font-semibold">Incomplete Orders</h3>
                     </div>
-                  ),
-                }}
-              />
+                    <UBadge variant="subtle">{incompleteOrders.value.length}</UBadge>
+                  </div>
+                ),
+                default: () => <UTable class="h-full" data={incompleteOrders.value} />,
+              }}
             </UCard>
           </div>
 
           {/* Right/Side column */}
           <aside class="lg:col-span-1">
-            <UCard class="h-full">
+            <UCard>
               <div class="flex items-center gap-2">
                 {/* <UIcon
                   name="i-heroicons-video-camera-20-solid"
-                  class="h-5 w-5 text-gray-500 dark:text-gray-400"
                 /> */}
                 <h3 class="text-base/6 font-semibold text-gray-900 dark:text-white">
                   Operation Video

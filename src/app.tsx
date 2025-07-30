@@ -1,4 +1,4 @@
-import { RouterLink, RouterView, type RouteLocationNormalizedLoaded } from 'vue-router'
+import { RouterView, type RouteLocationNormalizedLoaded } from 'vue-router'
 import {
   computed,
   defineAsyncComponent,
@@ -14,6 +14,7 @@ import DevMenu from '@/components/devtools/dev-menu'
 import * as locales from '@nuxt/ui/locale'
 import { useI18n } from 'vue-i18n'
 import ThemePickerPopover from './components/theme/theme-picker-popover'
+import Placeholder from './components/common/placeholder'
 
 // Cache for dynamically loaded layout components.
 // This prevents the layout component from being recreated on every route change,

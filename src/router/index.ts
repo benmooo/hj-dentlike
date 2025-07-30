@@ -91,7 +91,7 @@ const router = createRouter({
         requiresAuth: true,
         layout: layoutWithSidebar,
       },
-      component: () => import('../views/client/home'),
+      component: () => import('../views/client/home/home'),
     },
 
     {
