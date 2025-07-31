@@ -105,9 +105,12 @@ export default defineComponent({
               <div class="flex items-center justify-end">
                 {/* <UCheckbox v-model={state.remember} name="remember" label="Remember me" /> */}
                 <div class="text-sm">
-                  <a href="#" class="text-primary-600 hover:text-primary-500">
+                  <RouterLink
+                    to="/auth/reset-password/verify-email"
+                    class="text-primary-600 hover:text-primary-500"
+                  >
                     {t('loginPage.forgotPassword')}
-                  </a>
+                  </RouterLink>
                 </div>
               </div>
 
