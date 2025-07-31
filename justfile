@@ -9,3 +9,6 @@ lint:
 
 format:
     bun run format
+
+build:
+    bun run build
