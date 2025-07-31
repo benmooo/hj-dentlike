@@ -141,6 +141,9 @@ const router = createRouter({
       },
       component: () => import('../views/client/user/settings/settings'),
     },
+
+    // 404 page
+    { path: '/:pathMatch(.*)', component: () => import('../views/exception/404') },
   ],
 })
 
