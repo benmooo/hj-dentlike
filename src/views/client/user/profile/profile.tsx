@@ -1,19 +1,10 @@
+import Placeholder from '@/components/common/placeholder'
 import { defineComponent } from 'vue'
 
 export default defineComponent(() => {
   return () => (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        fontSize: '24px',
-        color: '#888',
-        fontFamily: 'Arial, sans-serif',
-      }}
-    >
-      user profile page
-    </div>
+    <Placeholder class="h-screen">
+      <div>user profile</div>
+    </Placeholder>
   )
 })

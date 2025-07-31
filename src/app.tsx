@@ -15,6 +15,7 @@ import * as locales from '@nuxt/ui/locale'
 import { useI18n } from 'vue-i18n'
 import ThemePickerPopover from './components/theme/theme-picker-popover'
 import Placeholder from './components/common/placeholder'
+import ErrorBoundary from './components/common/error-boundary'
 
 // Cache for dynamically loaded layout components.
 // This prevents the layout component from being recreated on every route change,
@@ -58,7 +59,9 @@ export default defineComponent({
           </div>
 
           <Layout>
-            <RouterView>{{ default: withPageTransition('slide-left') }}</RouterView>
+            <ErrorBoundary>
+              <RouterView>{{ default: withPageTransition('slide-left') }}</RouterView>
+            </ErrorBoundary>
           </Layout>
         </UApp>
       )
