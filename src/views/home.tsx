@@ -60,10 +60,12 @@ export default defineComponent({
                   solutions to help you achieve a healthy, confident smile.
                 </p>
                 <div class="flex flex-wrap items-center gap-4 mt-4">
-                  <RouterLink to="/auth/signup">
+                  <RouterLink to="/client/home">
                     <UButton label="Get Started →" size="lg" />
                   </RouterLink>
-                  <UButton label="Contact Us" variant="outline" size="lg" disabled />
+                  <RouterLink to="/auth/signup">
+                    <UButton label="Join Us" variant="outline" size="lg" />
+                  </RouterLink>
                 </div>
                 <div class="flex items-center gap-x-3 mt-16 text-muted-foreground text-sm">
                   <div class="w-7 h-11 border-2 border-muted-foreground/50 rounded-full flex items-center justify-center">

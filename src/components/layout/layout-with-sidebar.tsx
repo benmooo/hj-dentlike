@@ -74,7 +74,7 @@ export default defineComponent({
             </div>
 
             {/* Header Actions */}
-            <div class="flex items-center space-x-3">
+            <div class="flex items-center space-x-2">
               <ColorModeSwitcher />
               <LocaleSwitcher />
               <ThemePickerPopover />
@@ -105,7 +105,13 @@ export default defineComponent({
                   ],
                 ]}
               >
-                <UAvatar size="sm" src="/avatar-placeholder.jpg" alt="User Avatar" />
+                <UAvatar
+                  size="sm"
+                  src="/avatar-placeholder.jpg"
+                  alt="User Avatar"
+                  chip
+                  icon="i-lucide-user"
+                />
               </UDropdown>
             </div>
           </header>
