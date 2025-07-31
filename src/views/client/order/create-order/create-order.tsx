@@ -26,33 +26,43 @@ export default defineComponent({
     const items = [
       {
         title: '基本信息',
+        description: '填写基本信息',
       },
       {
         title: '牙位',
+        description: '选择牙位',
       },
       {
         title: '项目类型',
+        description: '选择项目类型',
       },
       {
         title: '材料',
+        description: '选择材料',
       },
       {
         title: '牙色',
+        description: '选择牙色',
       },
       {
         title: '咬合空间和冠的类型',
+        description: '选择咬合空间和冠的类型',
       },
       {
         title: '种植相关的问题',
+        description: '选择种植相关的问题',
       },
       {
         title: '附件上传',
+        description: '上传附件',
       },
       {
         title: '特别要求',
+        description: '填写特别要求',
       },
       {
         title: '提交',
+        description: '提交订单',
       },
     ]
     const step = ref(0) // UStepper is 1-indexed
@@ -86,7 +96,7 @@ export default defineComponent({
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Left: Stepper */}
           <div class="lg:col-span-2">
-            <UStepper v-model={step.value} items={items} orientation="vertical" />
+            <UStepper size="sm" v-model={step.value} items={items} orientation="vertical" />
           </div>
 
           {/* Middle: Content */}
