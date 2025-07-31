@@ -9,6 +9,8 @@ import Placeholder from '@/components/common/placeholder'
 import UPopover from '@nuxt/ui/components/Popover.vue'
 import UCalendar from '@nuxt/ui/components/Calendar.vue'
 import { CalendarDate, DateFormatter, getLocalTimeZone } from '@internationalized/date'
+import OrderInspector from './order-inspector'
+import type { CreateOrder } from './types'
 
 const df = new DateFormatter('en-US', {
   dateStyle: 'medium',
@@ -68,17 +70,44 @@ export default defineComponent({
     const step = ref(0) // UStepper is 1-indexed
 
     // Form state mimicking the image
-    const state = reactive({
+    const state = reactive<Partial<CreateOrder>>({
       dentistName: 'Lord Howard Florey',
       clinicName: 'Odontex Dental Labs',
       phone: '+61 412 345 678',
       email: 'Lord Howard Florey@gionline.com.au',
-      date: '6月 21日, 2025',
-      dueDate: '7月 6日, 2025',
+      date: '2025-06-21', // Changed to YYYY-MM-DD for consistency, can be adjusted
+      dueDate: '2025-07-06', // Changed to YYYY-MM-DD for consistency, can be adjusted
       patientName: 'Thomas Keneally',
       gender: 'male',
       patientAge: '56',
       orderId: '20250621001',
+      impressionMethod: '口扫件', // Example from image
+      orderProperty: '加急', // Example from image
+      products: [
+        // Example initial product for demonstration in inspector
+        {
+          restorationType: '固定修复',
+          toothPosition: 5,
+          itemType: '嵌体',
+          material: '玻璃陶瓷',
+          toothColor: '2L1.5',
+          stain: '不要染色',
+          occlusalSpace: '调备牙',
+          crownType: '正常',
+        },
+        {
+          restorationType: '固定修复',
+          toothPosition: 4,
+          itemType: '嵌体1',
+          material: '玻璃陶瓷fj',
+          toothColor: '2L1.5',
+          stain: '不要染色',
+          occlusalSpace: '调备牙',
+          crownType: '正常',
+        },
+      ],
+      attachments: ['file1.jpg'], // Example status
+      specialRequirements: '做工精美', // Example from image
     })
 
     const clinicOptions = [
@@ -173,9 +202,7 @@ export default defineComponent({
 
           {/* Right: Inspector */}
           <div class="lg:col-span-3">
-            <Placeholder class="h-full">
-              <span class="text-dimmed">暂无订单信息</span>
-            </Placeholder>
+            <OrderInspector order={state} />
           </div>
         </div>
       </div>

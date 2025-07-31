@@ -12,7 +12,7 @@ export default defineComponent({
   name: 'LayoutWithSidebar',
   setup(props, { slots }) {
     // Sidebar state management
-    const isCollapsed = ref(false)
+    const isCollapsed = ref(true)
 
     const sidebarWidth = computed(() => (isCollapsed.value ? 'w-16' : 'w-60'))
     const mainMargin = computed(() => (isCollapsed.value ? 'ml-16' : 'ml-60'))
