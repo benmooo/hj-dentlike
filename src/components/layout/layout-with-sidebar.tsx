@@ -4,7 +4,9 @@ import Sidebar from '../sidebar/sidebar'
 import UButton from '@nuxt/ui/components/Button.vue'
 import UDropdown from '@nuxt/ui/components/DropdownMenu.vue'
 import UAvatar from '@nuxt/ui/components/Avatar.vue'
-import ULink from '@nuxt/ui/components/Link.vue'
+import LocaleSwitcher from '../common/locale-switcher'
+import ColorModeSwitcher from '../common/color-mode-switcher'
+import ThemePickerPopover from '../theme/theme-picker-popover'
 
 export default defineComponent({
   name: 'LayoutWithSidebar',
@@ -73,8 +75,12 @@ export default defineComponent({
 
             {/* Header Actions */}
             <div class="flex items-center space-x-3">
+              <ColorModeSwitcher />
+              <LocaleSwitcher />
+              <ThemePickerPopover />
+
               <UButton variant="ghost" icon="i-lucide-bell" size="sm"></UButton>
-              <UButton variant="link" size="sm" icon="i-lucide-settings"></UButton>
+              <UButton variant="ghost" size="sm" icon="i-lucide-settings"></UButton>
 
               <UDropdown
                 items={[

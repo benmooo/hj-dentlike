@@ -25,9 +25,9 @@ export default defineComponent({
           anchor: () => (
             <UButton
               icon="i-lucide-swatch-book"
-              variant="solid"
               onClick={onClick}
-              class={'rounded-full'}
+              variant='ghost'
+              size='sm'
             ></UButton>
           ),
           content: () => <ThemePicker />,

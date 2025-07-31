@@ -68,8 +68,8 @@ export default defineComponent({
     ])
 
     return () => (
-      <UDropDownMenu items={items.value} ui={{ content: 'w-48' }}>
-        <UButton icon="i-lucide-menu" color="neutral" variant="solid" class={'rounded-full'} />
+      <UDropDownMenu size="sm" items={items.value} ui={{ content: 'w-48' }}>
+        <UButton icon="i-lucide-circle-help" variant="solid" class={'rounded-full'} size="sm" />
       </UDropDownMenu>
     )
   },

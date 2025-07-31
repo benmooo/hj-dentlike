@@ -4,13 +4,11 @@ export default defineComponent({
   name: 'DefaultLayout',
   setup(_, { slots }) {
     return () => (
-      <div class="default-layout">
-        {/* {slots.default ? slots.default() : null} */}
-
+      <div>
         {slots.default?.()}
-        <footer class="footer">
+        {/* <footer class="footer">
           <small>© 2024 Company Name -- default layout</small>
-        </footer>
+        </footer> */}
       </div>
     )
   },
