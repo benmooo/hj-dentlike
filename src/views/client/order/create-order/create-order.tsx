@@ -9,8 +9,11 @@ import Placeholder from '@/components/common/placeholder'
 import UPopover from '@nuxt/ui/components/Popover.vue'
 import UCalendar from '@nuxt/ui/components/Calendar.vue'
 import { CalendarDate, DateFormatter, getLocalTimeZone } from '@internationalized/date'
-import OrderInspector from './order-inspector'
+import OrderInspector from '@/components/order/create-order/inspector'
 import type { CreateOrder } from './types'
+import ToothPosition from '@/components/order/create-order/tooth-position'
+import ItemType from '@/components/order/create-order/item-type'
+import MaterialType from '@/components/order/create-order/material'
 
 const df = new DateFormatter('en-US', {
   dateStyle: 'medium',
@@ -25,46 +28,88 @@ export default defineComponent({
     }
 
     // Stepper configuration
+    // const items = [
+    //   {
+    //     title: '基本信息',
+    //     description: '填写基本信息',
+    //   },
+    //   {
+    //     title: '牙位',
+    //     description: '选择牙位',
+    //   },
+    //   {
+    //     title: '项目类型',
+    //     description: '选择项目类型',
+    //   },
+    //   {
+    //     title: '材料',
+    //     description: '选择材料',
+    //   },
+    //   {
+    //     title: '牙色',
+    //     description: '选择牙色',
+    //   },
+    //   {
+    //     title: '咬合空间和冠的类型',
+    //     description: '选择咬合空间和冠的类型',
+    //   },
+    //   {
+    //     title: '种植相关的问题',
+    //     description: '选择种植相关的问题',
+    //   },
+    //   {
+    //     title: '附件上传',
+    //     description: '上传附件',
+    //   },
+    //   {
+    //     title: '特别要求',
+    //     description: '填写特别要求',
+    //   },
+    //   {
+    //     title: '提交',
+    //     description: '提交订单',
+    //   },
+    // ]
     const items = [
       {
-        title: '基本信息',
-        description: '填写基本信息',
+        title: 'Basic Information',
+        description: 'Fill in basic information',
       },
       {
-        title: '牙位',
-        description: '选择牙位',
+        title: 'Tooth Position',
+        description: 'Select tooth position',
       },
       {
-        title: '项目类型',
-        description: '选择项目类型',
+        title: 'Item Type',
+        description: 'Select item type',
       },
       {
-        title: '材料',
-        description: '选择材料',
+        title: 'Material',
+        description: 'Select material',
       },
       {
-        title: '牙色',
-        description: '选择牙色',
+        title: 'Shade',
+        description: 'Select shade',
       },
       {
-        title: '咬合空间和冠的类型',
-        description: '选择咬合空间和冠的类型',
+        title: 'Occlusal Space and Crown Type',
+        description: 'Select occlusal space and crown type',
       },
       {
-        title: '种植相关的问题',
-        description: '选择种植相关的问题',
+        title: 'Implant-Related Questions',
+        description: 'Answer implant-related questions',
       },
       {
-        title: '附件上传',
-        description: '上传附件',
+        title: 'Attachment Upload',
+        description: 'Upload attachments',
       },
       {
-        title: '特别要求',
-        description: '填写特别要求',
+        title: 'Special Requirements',
+        description: 'Fill in special requirements',
       },
       {
-        title: '提交',
-        description: '提交订单',
+        title: 'Submit',
+        description: 'Submit order',
       },
     ]
     const step = ref(0) // UStepper is 1-indexed
@@ -81,13 +126,13 @@ export default defineComponent({
       gender: 'male',
       patientAge: '56',
       orderId: '20250621001',
-      impressionMethod: '口扫件', // Example from image
-      orderProperty: '加急', // Example from image
+      impressionMethod: 'oralScan', // Example from image
+      orderProperty: 'urgent', // Example from image
       products: [
         // Example initial product for demonstration in inspector
         {
           restorationType: '固定修复',
-          toothPosition: 5,
+          toothPosition: [15],
           itemType: '嵌体',
           material: '玻璃陶瓷',
           toothColor: '2L1.5',
@@ -96,8 +141,8 @@ export default defineComponent({
           crownType: '正常',
         },
         {
-          restorationType: '固定修复',
-          toothPosition: 4,
+          restorationType: '移动修复',
+          toothPosition: [12, 13],
           itemType: '嵌体1',
           material: '玻璃陶瓷fj',
           toothColor: '2L1.5',
@@ -108,6 +153,12 @@ export default defineComponent({
       ],
       attachments: ['file1.jpg'], // Example status
       specialRequirements: '做工精美', // Example from image
+      // New fields from ToothPosition component
+      // selectedJaw: 'full',
+      // selectedCrownType: 'single',
+      // orderProperty: '',
+      // New field from ItemType component
+      // itemType: '',
     })
 
     const clinicOptions = [
@@ -192,9 +243,14 @@ export default defineComponent({
                 </div>
               </div>
             )}
+            {/* Tooth Position Step */}
+            {step.value === 1 && <ToothPosition />}
+            {step.value === 2 && <ItemType />}
+            {step.value === 3 && <MaterialType />}
+
             {/* Placeholder for other steps */}
-            {step.value > 0 && (
-              <Placeholder class="w-full h-[40rem]">
+            {step.value > 3 && (
+              <Placeholder class="h-[40rem]">
                 <div class="text-dimmed">Content for {items[step.value]?.title}</div>
               </Placeholder>
             )}

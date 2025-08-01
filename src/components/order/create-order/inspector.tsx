@@ -1,8 +1,9 @@
 import { defineComponent, type PropType } from 'vue'
 import UDivider from '@nuxt/ui/components/Separator.vue'
-import { type CreateOrder, type Product } from './types' // Assuming types.ts is in the same directory
+import { type CreateOrder, type Product } from '../../../views/client/order/create-order/types' // Assuming types.ts is in the same directory
 
 export default defineComponent({
+  name: 'OrderInspector',
   props: {
     order: {
       type: Object as PropType<Partial<CreateOrder>>,
@@ -39,7 +40,7 @@ export default defineComponent({
                 <div class="w-full h-px"></div>
                 <div class="h-full w-px absolute"></div>
               </div>
-              {product.toothPosition}
+              {product.toothPosition.join(',')}
             </div>
           </div>
         )}

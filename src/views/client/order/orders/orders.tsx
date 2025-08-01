@@ -4,7 +4,6 @@ import UInput from '@nuxt/ui/components/Input.vue'
 import USelect from '@nuxt/ui/components/Select.vue'
 import UTable from '@nuxt/ui/components/Table.vue'
 import UPagination from '@nuxt/ui/components/Pagination.vue'
-import Placeholder from '@/components/common/placeholder'
 
 export default defineComponent({
   name: 'OrdersComponent',
@@ -160,66 +159,60 @@ export default defineComponent({
     }
 
     return () => (
-      <Placeholder class="h-screen">
-        <div>order list page</div>
-      </Placeholder>
+      <div>
+        {/* Filters */}
+        <div class="mb-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4 items-end">
+            <div class="flex flex-col gap-1">
+              <label class="text-sm">医生姓名</label>
+              <UInput v-model={filters.doctorName} placeholder="医生姓名" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm">患者姓名</label>
+              <UInput v-model={filters.patientName} placeholder="患者姓名" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm">订单号</label>
+              <UInput v-model={filters.orderId} placeholder="订单号" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm">订单状态</label>
+              <USelect v-model={filters.status} items={statusOptions} />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm">病例类型</label>
+              <UInput v-model={filters.caseType} placeholder="病例类型" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm">戴牙日期</label>
+              <UInput v-model={filters.dueDate} placeholder="戴牙日期" type="date" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm">录单时间</label>
+              <UInput v-model={filters.orderDate} placeholder="录单时间" type="date" />
+            </div>
+          </div>
+        </div>
+
+        {/* Table Section */}
+        <div>
+          <div class="flex justify-end items-center gap-2 mb-4">
+            <UButton icon="i-heroicons-plus-circle-solid">新增订单</UButton>
+            <UButton variant="outline" icon="i-lucide-filter-x">
+              重置
+            </UButton>
+            <UButton variant="outline" icon="i-lucide-download">
+              导出报表
+            </UButton>
+          </div>
+
+          <UTable data={orders} />
+          <div class="flex justify-between items-center mt-4">
+            <p class="text-sm text-gray-400">显示 1-7, 共 {orders.length} 条数据</p>
+            <UPagination total={100} sibling-count={1} show-edges />
+          </div>
+        </div>
+      </div>
     )
-
-    // (
-    //   <div>
-    //     {/* Filters */}
-    //     <div class="mb-6">
-    //       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4 items-end">
-    //         <div class="flex flex-col gap-1">
-    //           <label class="text-sm">医生姓名</label>
-    //           <UInput v-model={filters.doctorName} placeholder="医生姓名" />
-    //         </div>
-    //         <div class="flex flex-col gap-1">
-    //           <label class="text-sm">患者姓名</label>
-    //           <UInput v-model={filters.patientName} placeholder="患者姓名" />
-    //         </div>
-    //         <div class="flex flex-col gap-1">
-    //           <label class="text-sm">订单号</label>
-    //           <UInput v-model={filters.orderId} placeholder="订单号" />
-    //         </div>
-    //         <div class="flex flex-col gap-1">
-    //           <label class="text-sm">订单状态</label>
-    //           <USelect v-model={filters.status} items={statusOptions} />
-    //         </div>
-    //         <div class="flex flex-col gap-1">
-    //           <label class="text-sm">病例类型</label>
-    //           <UInput v-model={filters.caseType} placeholder="病例类型" />
-    //         </div>
-    //         <div class="flex flex-col gap-1">
-    //           <label class="text-sm">戴牙日期</label>
-    //           <UInput v-model={filters.dueDate} placeholder="戴牙日期" type="date" />
-    //         </div>
-    //         <div class="flex flex-col gap-1">
-    //           <label class="text-sm">录单时间</label>
-    //           <UInput v-model={filters.orderDate} placeholder="录单时间" type="date" />
-    //         </div>
-    //       </div>
-    //     </div>
-
-    //     {/* Table Section */}
-    //     <div>
-    //       <div class="flex justify-end items-center gap-2 mb-4">
-    //         <UButton icon="i-heroicons-plus-circle-solid">新增订单</UButton>
-    //         <UButton variant="outline" icon="i-lucide-filter-x">
-    //           重置
-    //         </UButton>
-    //         <UButton variant="outline" icon="i-lucide-download">
-    //           导出报表
-    //         </UButton>
-    //       </div>
-
-    //       <UTable data={orders} />
-    //       <div class="flex justify-between items-center mt-4">
-    //         <p class="text-sm text-gray-400">显示 1-7, 共 {orders.length} 条数据</p>
-    //         <UPagination total={100} sibling-count={1} show-edges />
-    //       </div>
-    //     </div>
-    //   </div>
-    // )
   },
 })
