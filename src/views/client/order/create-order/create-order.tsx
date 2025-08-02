@@ -15,6 +15,7 @@ import ToothPosition from '@/components/order/create-order/tooth-position'
 import ItemType from '@/components/order/create-order/item-type'
 import MaterialType from '@/components/order/create-order/material'
 import Shade from '@/components/order/create-order/shade'
+import OcclusalSpace from '@/components/order/create-order/occlusal-space'
 
 const df = new DateFormatter('en-US', {
   dateStyle: 'medium',
@@ -249,9 +250,10 @@ export default defineComponent({
             {step.value === 2 && <ItemType />}
             {step.value === 3 && <MaterialType />}
             {step.value === 4 && <Shade />}
+            {step.value === 5 && <OcclusalSpace />}
 
             {/* Placeholder for other steps */}
-            {step.value > 4 && (
+            {step.value > 5 && (
               <Placeholder class="h-[40rem]">
                 <div class="text-dimmed">Content for {items[step.value]?.title}</div>
               </Placeholder>
