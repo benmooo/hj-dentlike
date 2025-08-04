@@ -17,6 +17,7 @@ import MaterialType from '@/components/order/create-order/material'
 import Shade from '@/components/order/create-order/shade'
 import OcclusalSpace from '@/components/order/create-order/occlusal-space'
 import Implant from '@/components/order/create-order/implant'
+import RetentionMethodAndOther from '@/components/order/create-order/retention-method-and-other'
 
 const df = new DateFormatter('en-US', {
   dateStyle: 'medium',
@@ -103,12 +104,16 @@ export default defineComponent({
         description: 'Answer implant-related questions',
       },
       {
-        title: 'Attachment Upload',
-        description: 'Upload attachments',
+        title: 'Retention Method, Abutment Material, and Other Details',
+        // description: 'Specify retention method, abutment material, and other relevant details',
       },
       {
         title: 'Special Requirements',
         description: 'Fill in special requirements',
+      },
+      {
+        title: 'Attachment Upload',
+        description: 'Upload attachments',
       },
       {
         title: 'Submit',
@@ -253,9 +258,10 @@ export default defineComponent({
             {step.value === 4 && <Shade />}
             {step.value === 5 && <OcclusalSpace />}
             {step.value === 6 && <Implant />}
+            {step.value === 7 && <RetentionMethodAndOther />}
 
             {/* Placeholder for other steps */}
-            {step.value > 6 && (
+            {step.value > 7 && (
               <Placeholder class="h-[40rem]">
                 <div class="text-dimmed">Content for {items[step.value]?.title}</div>
               </Placeholder>
