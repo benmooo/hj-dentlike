@@ -19,6 +19,7 @@ import OcclusalSpace from '@/components/order/create-order/occlusal-space'
 import Implant from '@/components/order/create-order/implant'
 import RetentionMethodAndOther from '@/components/order/create-order/retention-method-and-other'
 import SpecialRequirements from '@/components/order/create-order/special-requirements'
+import Attachments from '@/components/order/create-order/attachments'
 
 const df = new DateFormatter('en-US', {
   dateStyle: 'medium',
@@ -261,9 +262,10 @@ export default defineComponent({
             {step.value === 6 && <Implant />}
             {step.value === 7 && <RetentionMethodAndOther />}
             {step.value === 8 && <SpecialRequirements />}
+            {step.value === 9 && <Attachments />}
 
             {/* Placeholder for other steps */}
-            {step.value > 8 && (
+            {step.value > 9 && (
               <Placeholder class="h-[40rem]">
                 <div class="text-dimmed">Content for {items[step.value]?.title}</div>
               </Placeholder>
