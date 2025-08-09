@@ -20,6 +20,7 @@ import Implant from '@/components/order/create-order/implant'
 import RetentionMethodAndOther from '@/components/order/create-order/retention-method-and-other'
 import SpecialRequirements from '@/components/order/create-order/special-requirements'
 import Attachments from '@/components/order/create-order/attachments'
+import OrderDetail from '@/components/order/create-order/order-detail'
 
 const df = new DateFormatter('en-US', {
   dateStyle: 'medium',
@@ -134,8 +135,8 @@ export default defineComponent({
       dueDate: '2025-07-06', // Changed to YYYY-MM-DD for consistency, can be adjusted
       patientName: 'Thomas Keneally',
       gender: 'male',
-      patientAge: '56',
-      orderId: '20250621001',
+      patientAge: 56,
+      // id: '20250621001',
       impressionMethod: 'oralScan', // Example from image
       orderProperty: 'urgent', // Example from image
       products: [
@@ -239,7 +240,7 @@ export default defineComponent({
                     <UInput v-model={state.patientAge} class="w-full" />
                   </UFormField>
                   <UFormField label="订单号" name="orderId" size="lg">
-                    <UInput v-model={state.orderId} disabled class="w-full" />
+                    <UInput v-model={state.clinicName} disabled class="w-full" />
                   </UFormField>
                 </div>
                 <div class="flex justify-center mt-12">
@@ -263,9 +264,10 @@ export default defineComponent({
             {step.value === 7 && <RetentionMethodAndOther />}
             {step.value === 8 && <SpecialRequirements />}
             {step.value === 9 && <Attachments />}
+            {step.value === 10 && <OrderDetail order={state} />}
 
             {/* Placeholder for other steps */}
-            {step.value > 9 && (
+            {step.value > 10 && (
               <Placeholder class="h-[40rem]">
                 <div class="text-dimmed">Content for {items[step.value]?.title}</div>
               </Placeholder>

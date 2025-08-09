@@ -19,7 +19,7 @@ export default defineComponent({
 
     return () => (
       <div class="space-y-8">
-        <UFormField name="Attachments" label="Image" description="upload files here">
+        <UFormField name="attachments" label="Attachments" description="upload files here">
           <UFileUpload
             position="outside"
             layout="list"

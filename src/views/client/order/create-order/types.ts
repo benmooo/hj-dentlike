@@ -1,5 +1,5 @@
 export interface Product {
-  toothPosition?: number[] // E.g., "5" in the image, representing a series of tooth numbers
+  toothPosition?: number[] // Array of selected tooth IDs (e.g., 'U3R', 'L1L')
   itemType?: string // 项目类型: 嵌体
   material?: string // 材料: 玻璃陶瓷
   toothColor?: string // 牙色: 2L1.5
@@ -19,12 +19,8 @@ export interface CreateOrder {
   dueDate?: string // Expected format like 'YYYY-MM-DD' or 'MM月 DD日, YYYY'
   patientName?: string
   gender?: 'male' | 'female' | string // '男' | '女'
-  patientAge?: string // Can be a string as currently used, or number
+  patientAge?: number // Can be a string as currently used, or number
   orderId?: string
-  // // Tooth Position Information (from Stepper Step 1)
-  // selectedTeeth?: string[]; // Array of selected tooth IDs (e.g., 'U3R', 'L1L')
-  // selectedJaw?: 'upper' | 'lower' | 'full';
-  // selectedCrownType?: 'single' | 'bridge';
   impressionMethod?: 'oralScan' | 'plasterModel' // 取模方式: 口扫件
   orderProperty?: 'urgent' | 'rework' | ''; // 订单属性: 加急, 返工
 
@@ -32,6 +28,6 @@ export interface CreateOrder {
   products?: Product[]
 
   // Attachment and Special Requirements (from later steps)
-  attachments?: string[] // E.g., file paths or statuses like '已上传'
+  attachments?: string[] // uploaded file ids
   specialRequirements?: string // 特别要求: 做工精美
 }
