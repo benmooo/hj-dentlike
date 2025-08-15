@@ -115,6 +115,16 @@ const router = createRouter({
     },
 
     {
+      path: '/client/orders/:id',
+      name: 'client-order-detail',
+      meta: {
+        requiresAuth: true,
+        layout: layoutWithSidebar,
+      },
+      component: () => import('../views/client/order/order-detail/order-detail'),
+    },
+
+    {
       path: '/client/finance/dashboard',
       name: 'client-finance-dashboard',
       meta: {

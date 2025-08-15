@@ -1,0 +1,21 @@
+commit b26f57f1ee3214837aa6cf83dd2a4ff4424e7d16
+Author: aka <benmo0802@gmail.com>
+Date:   Sat Aug 9 18:37:42 2025 +0800
+
+    feat: Add database schema for Dentlike application
+    
+    Initial database schema includes tables for: - Users (dentists) -
+    Patients - Orders - Solutions - Attachments - OrderAttachments join
+    table
+
+commit 87e128a5919b953cb9a8bceea6710b33f69f0d73
+Author: aka <benmo0802@gmail.com>
+Date:   Sat Aug 9 18:37:28 2025 +0800
+
+    feat: Add order detail component and update form field name
+    
+    - Add new OrderDetail component for final review step - Change form
+    field name from "Attachments" to "attachments" - Update CreateOrder type
+    with more specific field types - Adjust patientAge to be number type
+    instead of string - Add placeholder for order detail step in
+    create-order flow
