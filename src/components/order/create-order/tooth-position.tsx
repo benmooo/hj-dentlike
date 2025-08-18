@@ -1,4 +1,4 @@
-import { defineComponent, ref, reactive, computed } from 'vue'
+import { defineComponent, ref, reactive, computed, type ComputedRef } from 'vue'
 import URadioGroup from '@nuxt/ui/components/RadioGroup.vue'
 import UButton from '@nuxt/ui/components/Button.vue'
 import UFormGroup from '@nuxt/ui/components/FormField.vue'
@@ -77,6 +77,17 @@ const toothMissingImages = {
   38: tooth38Miss,
 }
 
+type Tooth = {
+  id: string
+  fdiNumber: number
+  displayNumber: number
+  jaw: string
+  quadrant: string
+  imagePath: string
+  missingImagePath: string
+  needsFlip: boolean
+}
+
 export default defineComponent({
   name: 'ToothPosition',
   setup(_, { emit }) {
@@ -92,7 +103,7 @@ export default defineComponent({
     // Define tooth numbers using FDI World Dental Federation notation:
     // Upper right: 18-11, Upper left: 21-28
     // Lower left: 31-38, Lower right: 41-48
-    const teethMap = computed(() => {
+    const teethMap: ComputedRef<Array<Tooth>> = computed(() => {
       const teeth = []
 
       // Upper Right Quadrant (18-11) - Available images: 18-11
@@ -111,7 +122,7 @@ export default defineComponent({
 
       // Upper Left Quadrant (21-28) - Use flipped 11-18 images
       for (let i = 21; i <= 28; i++) {
-        const sourceNumber = (32 - i) as keyof typeof toothImages // Maps 21->11, 22->12, ..., 28->18
+        const sourceNumber = (i - 10) as keyof typeof toothImages // Maps 21->11, 22->12, ..., 28->18
         teeth.push({
           id: `${i}`,
           fdiNumber: i,
@@ -140,7 +151,7 @@ export default defineComponent({
 
       // Lower Right Quadrant (41-48) - Use flipped 31-38 images
       for (let i = 48; i >= 41; i--) {
-        const sourceNumber = (79 - i) as keyof typeof toothImages // Maps 48->31, 47->32, ..., 41->38
+        const sourceNumber = (i - 10) as keyof typeof toothImages // Maps 48->31, 47->32, ..., 41->38
         teeth.push({
           id: `${i}`,
           fdiNumber: i,
@@ -230,9 +241,9 @@ export default defineComponent({
     }
 
     // Component to render individual tooth
-    const ToothComponent = ({ tooth }: { tooth: any }) => {
+    const ToothComponent = ({ tooth }: { tooth: Tooth }) => {
       const isSelected = selectedTeeth.has(tooth.id)
-      const isClickable = isToothClickable(tooth.jaw)
+      const isClickable = isToothClickable(tooth.jaw as 'upper' | 'lower')
 
       return (
         <div
@@ -253,7 +264,7 @@ export default defineComponent({
             ]}
           >
             <img
-              src={tooth.imagePath}
+              src={tooth.imagePath || 'fdfdsf'}
               alt={`Tooth ${tooth.fdiNumber}`}
               class="w-full h-full object-contain"
               style="image-rendering: crisp-edges;"

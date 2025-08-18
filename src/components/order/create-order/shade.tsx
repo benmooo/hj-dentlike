@@ -7,6 +7,52 @@ import UTextarea from '@nuxt/ui/components/Textarea.vue'
 import UFormGroup from '@nuxt/ui/components/FormField.vue'
 import USeparator from '@nuxt/ui/components/Separator.vue'
 
+// Import 16-shade images
+import shadeA1 from '@/assets/image/shade/16/A1.png'
+import shadeA2 from '@/assets/image/shade/16/A2.png'
+import shadeA3 from '@/assets/image/shade/16/A3.png'
+import shadeA35 from '@/assets/image/shade/16/A3.5.png'
+import shadeA4 from '@/assets/image/shade/16/A4.png'
+import shadeB1 from '@/assets/image/shade/16/B1.png'
+import shadeB2 from '@/assets/image/shade/16/B2.png'
+import shadeB3 from '@/assets/image/shade/16/B3.png'
+import shadeB4 from '@/assets/image/shade/16/B4.png'
+import shadeC1 from '@/assets/image/shade/16/C1.png'
+import shadeC2 from '@/assets/image/shade/16/C2.png'
+import shadeC3 from '@/assets/image/shade/16/C3.png'
+import shadeC4 from '@/assets/image/shade/16/C4.png'
+import shadeD2 from '@/assets/image/shade/16/D2.png'
+import shadeD3 from '@/assets/image/shade/16/D3.png'
+import shadeD4 from '@/assets/image/shade/16/D4.png'
+
+// Import 26-shade images
+import shade1M1 from '@/assets/image/shade/26/1M1.png'
+import shade1M2 from '@/assets/image/shade/26/1M2.png'
+import shade2L15 from '@/assets/image/shade/26/2L1.5.png'
+import shade2L25 from '@/assets/image/shade/26/2L2.5.png'
+import shade2M1 from '@/assets/image/shade/26/2M1.png'
+import shade2M2 from '@/assets/image/shade/26/2M2.png'
+import shade2M3 from '@/assets/image/shade/26/2M3.png'
+import shade2R15 from '@/assets/image/shade/26/2R1.5.png'
+import shade2R25 from '@/assets/image/shade/26/2R2.5.png'
+import shade3L15 from '@/assets/image/shade/26/3L1.5.png'
+import shade3L25 from '@/assets/image/shade/26/3L2.5.png'
+import shade3M1 from '@/assets/image/shade/26/3M1.png'
+import shade3M2 from '@/assets/image/shade/26/3M2.png'
+import shade3M3 from '@/assets/image/shade/26/3M3.png'
+import shade3R15 from '@/assets/image/shade/26/3R1.5.png'
+import shade3R25 from '@/assets/image/shade/26/3R2.5.png'
+import shade4L15 from '@/assets/image/shade/26/4L1.5.png'
+import shade4L25 from '@/assets/image/shade/26/4L2.5.png'
+import shade4M1 from '@/assets/image/shade/26/4M1.png'
+import shade4M2 from '@/assets/image/shade/26/4M2.png'
+import shade4M3 from '@/assets/image/shade/26/4M3.png'
+import shade4R15 from '@/assets/image/shade/26/4R1.5.png'
+import shade4R25 from '@/assets/image/shade/26/4R2.5.png'
+import shade5M1 from '@/assets/image/shade/26/5M1.png'
+import shade5M2 from '@/assets/image/shade/26/5M2.png'
+import shade5M3 from '@/assets/image/shade/26/5M3.png'
+
 export default defineComponent({
   name: 'ShadeSelection',
   emits: ['prev-step', 'next-step'],
@@ -24,39 +70,39 @@ export default defineComponent({
     // Special requirements text area
     const specialRequirements = ref('')
 
-    // Define 16-color shades
+    // Define 16-color shades with their imported images
     const shades16 = [
-      'A1',
-      'A2',
-      'A3',
-      'A3.5',
-      'A4',
-      'B1',
-      'B2',
-      'B3',
-      'B4',
-      'C1',
-      'C2',
-      'C3',
-      'C4',
-      'D2',
-      'D3',
-      'D4',
+      { name: 'A1', image: shadeA1 },
+      { name: 'A2', image: shadeA2 },
+      { name: 'A3', image: shadeA3 },
+      { name: 'A3.5', image: shadeA35 },
+      { name: 'A4', image: shadeA4 },
+      { name: 'B1', image: shadeB1 },
+      { name: 'B2', image: shadeB2 },
+      { name: 'B3', image: shadeB3 },
+      { name: 'B4', image: shadeB4 },
+      { name: 'C1', image: shadeC1 },
+      { name: 'C2', image: shadeC2 },
+      { name: 'C3', image: shadeC3 },
+      { name: 'C4', image: shadeC4 },
+      { name: 'D2', image: shadeD2 },
+      { name: 'D3', image: shadeD3 },
+      { name: 'D4', image: shadeD4 },
     ]
 
     // Define 26-color shades (organized by column for layout)
     const shades26Columns = [
-      ['1M1', '1M2'],
-      ['2L1.5', '2L2.5'],
-      ['2M1', '2M2', '2M3'],
-      ['2R1.5', '2R2.5'],
-      ['3L1.5', '3L2.5'],
-      ['3M1', '3M2', '3M3'],
-      ['3R1.5', '3R2.5'],
-      ['4L1.5', '4L2.5'],
-      ['4M1', '4M2', '4M3'],
-      ['4R1.5', '4R2.5'],
-      ['5M1', '5M2', '5M3'],
+      [{ name: '1M1', image: shade1M1 }, { name: '1M2', image: shade1M2 }],
+      [{ name: '2L1.5', image: shade2L15 }, { name: '2L2.5', image: shade2L25 }],
+      [{ name: '2M1', image: shade2M1 }, { name: '2M2', image: shade2M2 }, { name: '2M3', image: shade2M3 }],
+      [{ name: '2R1.5', image: shade2R15 }, { name: '2R2.5', image: shade2R25 }],
+      [{ name: '3L1.5', image: shade3L15 }, { name: '3L2.5', image: shade3L25 }],
+      [{ name: '3M1', image: shade3M1 }, { name: '3M2', image: shade3M2 }, { name: '3M3', image: shade3M3 }],
+      [{ name: '3R1.5', image: shade3R15 }, { name: '3R2.5', image: shade3R25 }],
+      [{ name: '4L1.5', image: shade4L15 }, { name: '4L2.5', image: shade4L25 }],
+      [{ name: '4M1', image: shade4M1 }, { name: '4M2', image: shade4M2 }, { name: '4M3', image: shade4M3 }],
+      [{ name: '4R1.5', image: shade4R15 }, { name: '4R2.5', image: shade4R25 }],
+      [{ name: '5M1', image: shade5M1 }, { name: '5M2', image: shade5M2 }, { name: '5M3', image: shade5M3 }],
     ]
 
     // Mathematical model:
@@ -111,20 +157,24 @@ export default defineComponent({
           <div class="grid grid-cols-8 lg:grid-cols-16 gap-x-2 gap-y-4 justify-center">
             {shades16.map((shade) => (
               <button
-                key={shade}
+                key={shade.name}
                 type="button"
                 class={[
                   'flex flex-col items-center justify-center p-2 rounded-lg transition-colors duration-200',
                   'hover:bg-primary-500/20 border',
-                  selectedShade.value === shade
+                  selectedShade.value === shade.name
                     ? 'bg-primary-500/50 border-primary-500'
                     : 'bg-muted border-muted-600 text-muted',
                 ]}
-                onClick={() => selectShade(shade)}
+                onClick={() => selectShade(shade.name)}
               >
-                {/* Placeholder for tooth image */}
-                <div class="i-heroicons-sparkles text-3xl mb-1" />
-                <span class="text-sm font-medium">{shade}</span>
+                {/* Tooth shade image */}
+                <img
+                  src={shade.image}
+                  alt={`Shade ${shade.name}`}
+                  class="w-8 h-10 object-contain mb-1"
+                />
+                <span class="text-sm font-medium">{shade.name}</span>
               </button>
             ))}
           </div>
@@ -138,20 +188,24 @@ export default defineComponent({
               <div key={`col-${colIndex}`} class="flex flex-col gap-y-4 items-center">
                 {column.map((shade) => (
                   <button
-                    key={shade}
+                    key={shade.name}
                     type="button"
                     class={[
                       'flex flex-col items-center justify-center p-2 rounded-lg transition-colors duration-200',
                       'hover:bg-primary-500/20 border',
-                      selectedShade.value === shade
+                      selectedShade.value === shade.name
                         ? 'bg-primary-500/50 border-primary-500 text-white'
                         : 'bg-muted border-muted-600 text-muted',
                     ]}
-                    onClick={() => selectShade(shade)}
+                    onClick={() => selectShade(shade.name)}
                   >
-                    {/* Placeholder for tooth image */}
-                    <div class="i-heroicons-sparkles text-3xl mb-1" />
-                    <span class="text-sm font-medium">{shade}</span>
+                    {/* Tooth shade image */}
+                    <img
+                      src={shade.image}
+                      alt={`Shade ${shade.name}`}
+                      class="w-8 h-10 object-contain mb-1"
+                    />
+                    <span class="text-sm font-medium">{shade.name}</span>
                   </button>
                 ))}
               </div>
