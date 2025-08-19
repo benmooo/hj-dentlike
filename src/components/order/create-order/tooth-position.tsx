@@ -111,7 +111,7 @@ export default defineComponent({
         teeth.push({
           id: `${i}`,
           fdiNumber: i,
-          displayNumber: 18 - i + 1, // Convert to 1-8 for display
+          displayNumber: i - 10, // Convert to 1-8 for display
           jaw: 'upper',
           quadrant: 'upper-right',
           imagePath: toothImages[i as keyof typeof toothImages],
@@ -155,7 +155,7 @@ export default defineComponent({
         teeth.push({
           id: `${i}`,
           fdiNumber: i,
-          displayNumber: 49 - i, // Convert to 1-8 for display
+          displayNumber: i - 40, // Convert to 1-8 for display
           jaw: 'lower',
           quadrant: 'lower-right',
           imagePath: toothImages[sourceNumber],
@@ -311,9 +311,9 @@ export default defineComponent({
           />
           <UButton
             label="Reset"
-            color="secondary"
+            // color='secondary'
             variant="ghost"
-            icon="i-heroicons-arrow-path"
+            icon="i-lucide-refresh-ccw"
             onClick={resetSelection}
             class="hover:bg-primary/20"
           />
