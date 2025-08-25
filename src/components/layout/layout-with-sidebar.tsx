@@ -14,9 +14,6 @@ export default defineComponent({
     // Sidebar state management
     const isCollapsed = ref(true)
 
-    const sidebarWidth = computed(() => (isCollapsed.value ? 'w-16' : 'w-60'))
-    const mainMargin = computed(() => (isCollapsed.value ? 'ml-16' : 'ml-60'))
-
     // Toggle function
     const toggleSidebar = () => {
       isCollapsed.value = !isCollapsed.value
@@ -27,10 +24,13 @@ export default defineComponent({
         {/* Sidebar */}
         <aside
           class={[
-            'fixed left-0 top-0 z-40 h-full transition-all duration-300 ease-in-out',
+            'z-40 h-full transition-all duration-300 ease-in-out',
             'border-r border-muted',
             'shadow-sm',
-            sidebarWidth.value,
+            {
+              'w-64': !isCollapsed.value,
+              'w-16': isCollapsed.value,
+            },
           ]}
         >
           <div class="flex flex-col h-full">
@@ -55,7 +55,13 @@ export default defineComponent({
 
         {/* Main Content */}
         <main
-          class={['flex-1 flex flex-col transition-all duration-300 ease-in-out', mainMargin.value]}
+          class={[
+            'flex-1 flex flex-col transition-all duration-300 ease-in-out',
+            {
+              'max-w-[calc(100%-4rem)]': isCollapsed.value,
+              'max-w-[calc(100%-16rem)]': !isCollapsed.value,
+            },
+          ]}
         >
           {/* Header */}
           <header class="border-b border-muted h-16 flex items-center justify-between px-6">
