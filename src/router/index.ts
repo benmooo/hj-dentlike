@@ -162,6 +162,18 @@ const router = createRouter({
       component: () => import('../views/client/user/settings/settings'),
     },
 
+
+    // ------------ admin ------------
+    {
+      path: '/admin/employees',
+      name: 'admin-employees',
+      meta: {
+        requiresAuth: true,
+        layout: layoutWithSidebar,
+      },
+      component: () => import('../views/admin/employees/employees'),
+    },
+
     // 404 page
     { path: '/:pathMatch(.*)', component: () => import('../views/exception/404') },
   ],
