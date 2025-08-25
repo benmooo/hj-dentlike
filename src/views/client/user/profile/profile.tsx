@@ -102,7 +102,7 @@ export default defineComponent({
       closeAddClinicModal()
     }
 
-    const editClinic = (clinic: any) => {
+    const editClinic = (clinic: Clinic) => {
       // Handle edit clinic
       console.log('Edit clinic:', clinic)
     }
@@ -173,7 +173,7 @@ export default defineComponent({
               // columns={columns}
               data={clinics.value}
               v-slots={{
-                edit: ({ row }: { row: any }) => (
+                edit: ({ row }: { row: Clinic }) => (
                   <UButton
                     color="primary"
                     variant="ghost"
@@ -182,7 +182,7 @@ export default defineComponent({
                     onClick={() => editClinic(row)}
                   />
                 ),
-                status: ({ row }: { row: any }) => (
+                status: ({ row }: { row: Clinic }) => (
                   <UButton
                     color={row.status === 'enabled' ? 'primary' : 'secondary'}
                     variant="soft"
@@ -268,3 +268,11 @@ export default defineComponent({
     )
   },
 })
+
+export type Clinic = {
+  id: string
+  name: string
+  address: string
+  postalCode: string
+  status: string
+}
