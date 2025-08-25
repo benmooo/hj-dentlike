@@ -181,6 +181,24 @@ const router = createRouter({
       },
       component: () => import('../views/admin/create-employee/create-employee'),
     },
+    {
+      path: '/admin/doctors',
+      name: 'admin-doctors',
+      meta: {
+        requiresAuth: true,
+        layout: layoutWithSidebar,
+      },
+      component: () => import('../views/admin/doctors/doctors'),
+    },
+    {
+      path: '/admin/doctors/create',
+      name: 'admin-doctors-create',
+      meta: {
+        requiresAuth: true,
+        layout: layoutWithSidebar,
+      },
+      component: () => import('../views/admin/create-doctor/create-doctor'),
+    },
 
     // 404 page
     { path: '/:pathMatch(.*)', component: () => import('../views/exception/404') },

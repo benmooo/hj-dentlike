@@ -67,7 +67,27 @@ export default defineComponent({
       <div class="container max-w-4xl">
         <div class="space-y-6">
           {/* Header */}
-          <h1 class="text-xl font-semibold">创建员工</h1>
+          <div class="text-center">
+            <div class="flex items-center justify-center mb-3">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                <svg
+                  class="w-6 h-6 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <h1 class="text-2xl font-semibold text-foreground">新增员工</h1>
+            <p class="text-muted-foreground mt-2">添加新的员工到系统中</p>
+          </div>
 
           <UForm schema={schema} state={state} onSubmit={onSubmit}>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -119,7 +139,7 @@ export default defineComponent({
             </div>
 
             {/* Action Buttons */}
-            <div class="flex gap-2 pt-4 w-64">
+            <div class="flex gap-2 mt-6">
               <UButton
                 variant="outline"
                 color="error"

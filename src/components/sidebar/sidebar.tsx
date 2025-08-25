@@ -96,6 +96,11 @@ const sidebarItems: NavigationMenuItem[][] = [
       icon: 'i-lucide-user-pen',
       to: '/admin/employees',
     },
+    {
+      label: 'Doctors',
+      icon: 'i-healthicons-doctor',
+      to: '/admin/doctors',
+    },
   ],
   [
     {
