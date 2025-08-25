@@ -5,6 +5,7 @@ import USelect from '@nuxt/ui/components/Select.vue'
 import UTable from '@nuxt/ui/components/Table.vue'
 import UPagination from '@nuxt/ui/components/Pagination.vue'
 import UToggle from '@nuxt/ui/components/Switch.vue'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'EmployeesComponent',
@@ -88,6 +89,12 @@ export default defineComponent({
       employee.accountStatus = !employee.accountStatus
     }
 
+    const router = useRouter()
+
+    const onCreateEmployee = () => {
+      router.push('/admin/employees/create')
+    }
+
     const tableSlots = {
       'actions-data': ({ row }: { row: (typeof employees)[0] }) => (
         <div class="flex items-center gap-1">
@@ -132,7 +139,7 @@ export default defineComponent({
 
         {/* Add Employee Button */}
         <div>
-          <UButton color="primary" icon="i-heroicons-plus" size="lg">
+          <UButton onClick={onCreateEmployee} color="primary" icon="i-heroicons-plus" size="lg">
             新增员工
           </UButton>
         </div>

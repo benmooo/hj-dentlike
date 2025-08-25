@@ -162,7 +162,6 @@ const router = createRouter({
       component: () => import('../views/client/user/settings/settings'),
     },
 
-
     // ------------ admin ------------
     {
       path: '/admin/employees',
@@ -172,6 +171,15 @@ const router = createRouter({
         layout: layoutWithSidebar,
       },
       component: () => import('../views/admin/employees/employees'),
+    },
+    {
+      path: '/admin/employees/create',
+      name: 'admin-employees-create',
+      meta: {
+        requiresAuth: true,
+        layout: layoutWithSidebar,
+      },
+      component: () => import('../views/admin/create-employee/create-employee'),
     },
 
     // 404 page
