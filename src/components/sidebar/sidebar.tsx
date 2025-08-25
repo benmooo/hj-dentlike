@@ -67,6 +67,11 @@ const sidebarItems: NavigationMenuItem[][] = [
       icon: 'i-lucide-badge-dollar-sign',
       to: '/client/finance/dashboard',
     },
+    {
+      label: 'Bills',
+      icon: 'i-lucide-receipt',
+      to: '/client/finance/bills',
+    },
   ],
   [
     {
@@ -82,6 +87,14 @@ const sidebarItems: NavigationMenuItem[][] = [
       label: 'Settings',
       icon: 'i-lucide-settings',
       to: '/client/user/settings',
+    },
+  ],
+  // admin routes
+  [
+    {
+      label: 'Employees',
+      icon: 'i-lucide-user-pen',
+      to: '/admin/employees',
     },
   ],
   [

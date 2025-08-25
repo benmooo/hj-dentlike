@@ -133,6 +133,16 @@ const router = createRouter({
       },
       component: () => import('../views/client/finance/dashboard/dashboard'),
     },
+
+    {
+      path: '/client/finance/bills',
+      name: 'client-finance-bills',
+      meta: {
+        requiresAuth: true,
+        layout: layoutWithSidebar,
+      },
+      component: () => import('../views/client/finance/bills/bills'),
+    },
     {
       path: '/client/user/profile',
       name: 'client-user-profile',
