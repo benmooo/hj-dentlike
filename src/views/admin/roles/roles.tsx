@@ -5,6 +5,7 @@ import USelect from '@nuxt/ui/components/Select.vue'
 import UTable, { type TableColumn } from '@nuxt/ui/components/Table.vue'
 import UBadge from '@nuxt/ui/components/Badge.vue'
 import UPagination from '@nuxt/ui/components/Pagination.vue'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'RolesComponent',
@@ -57,13 +58,15 @@ export default defineComponent({
         permissions: ['系统管理', '用户管理', '权限管理', '数据查看'],
       },
     ]
+    const toast = useToast()
+    const router = useRouter()
 
     const handleViewPermissions = (role: Role) => {
-      console.log('查看权限:', role)
+      router.push({ path: `/admin/roles/${role.id}` })
     }
 
     const handleEditRole = (role: Role) => {
-      console.log('编辑职务:', role)
+      router.push({ path: `/admin/roles/${role.id}` })
     }
 
     const handleDeleteRole = (role: Role) => {
@@ -75,7 +78,7 @@ export default defineComponent({
     }
 
     const handleAddRole = () => {
-      console.log('新增职务')
+      toast.add({ title: 'Unavailable' })
     }
 
     const handleQuery = () => {
