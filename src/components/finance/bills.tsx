@@ -1,4 +1,4 @@
-import { defineComponent, h, reactive, ref } from 'vue'
+import { defineComponent, reactive, ref } from 'vue'
 import UButton from '@nuxt/ui/components/Button.vue'
 import UInput from '@nuxt/ui/components/Input.vue'
 import USelect from '@nuxt/ui/components/Select.vue'
@@ -163,10 +163,10 @@ export default defineComponent({
         header: ({ column }) => getHeader(column, '扣费状态', 'left'),
         cell: ({ row }) => {
           const color = chargeStatusColorMap[row.getValue('chargeStatus') as 'success']
-          return h(
-            UBadge,
-            { class: 'capitalize', variant: 'subtle', color: color as 'success' },
-            () => row.getValue('chargeStatus'),
+          return (
+            <UBadge class="capitalize" variant="subtle" color={color as 'success'}>
+              {row.getValue('chargeStatus')}
+            </UBadge>
           )
         },
       },
@@ -180,16 +180,19 @@ export default defineComponent({
     function getHeader(column: Column<Bill>, label: string, position: 'left' | 'right') {
       const isPinned = column.getIsPinned()
 
-      return h(UButton, {
-        color: 'neutral',
-        variant: 'ghost',
-        label,
-        icon: isPinned ? 'i-lucide-pin-off' : 'i-lucide-pin',
-        class: '-mx-2.5',
-        onClick() {
-          column.pin(isPinned === position ? false : position)
-        },
-      })
+      return (
+        <UButton
+          size='sm'
+          color="neutral"
+          variant="ghost"
+          label={label}
+          icon={isPinned ? 'i-lucide-pin-off' : 'i-lucide-pin'}
+          class="-mx-2.5"
+          onClick={() => {
+            column.pin(isPinned === position ? false : position)
+          }}
+        ></UButton>
+      )
     }
 
     return () => (
