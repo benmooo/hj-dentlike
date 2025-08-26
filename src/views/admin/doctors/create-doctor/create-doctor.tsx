@@ -212,24 +212,11 @@ export default defineComponent({
 
             {/* Action Buttons */}
             <div class="flex gap-4 mt-6">
-              <UButton
-                variant="outline"
-                color="error"
-                size="lg"
-                class="flex-1"
-                onClick={handleCancel}
-                icon="i-heroicons-x-mark"
-              >
-                取消
+              <UButton variant="outline" size="lg" class="flex-1" onClick={handleCancel}>
+                <span class="mx-auto">取消</span>
               </UButton>
-              <UButton
-                type="submit"
-                color="primary"
-                size="lg"
-                class="flex-1"
-                icon="i-heroicons-check"
-              >
-                保存医生信息
+              <UButton type="submit" color="primary" size="lg" class="flex-1">
+                <span class="mx-auto">保存医生信息</span>
               </UButton>
             </div>
           </UForm>

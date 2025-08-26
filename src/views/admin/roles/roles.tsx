@@ -1,4 +1,4 @@
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, ref } from 'vue'
 import UButton from '@nuxt/ui/components/Button.vue'
 import UInput from '@nuxt/ui/components/Input.vue'
 import USelect from '@nuxt/ui/components/Select.vue'
@@ -6,6 +6,8 @@ import UTable, { type TableColumn } from '@nuxt/ui/components/Table.vue'
 import UBadge from '@nuxt/ui/components/Badge.vue'
 import UPagination from '@nuxt/ui/components/Pagination.vue'
 import { useRouter } from 'vue-router'
+import UModal from '@nuxt/ui/components/Modal.vue'
+import Placeholder from '@/components/common/placeholder'
 
 export default defineComponent({
   name: 'RolesComponent',
@@ -88,6 +90,7 @@ export default defineComponent({
     const handleReset = () => {
       filters.roleName = '全部'
     }
+    const open = ref(false)
 
     const columns: TableColumn<Role>[] = [
       {
@@ -141,15 +144,34 @@ export default defineComponent({
             >
               编辑
             </UButton>
-            <UButton
-              size="sm"
-              variant="outline"
-              color="error"
-              icon="i-lucide-trash"
-              onClick={() => handleDeleteRole(row.original)}
+
+            <UModal
+              v-model={open.value}
+              title="Are you sure?"
+              description="This role will be permanently deleted."
+              ui={{ footer: 'justify-end' }}
             >
-              删除
-            </UButton>
+              {{
+                default: () => (
+                  <UButton
+                    size="sm"
+                    variant="outline"
+                    color="error"
+                    icon="i-lucide-trash"
+                    onClick={() => handleDeleteRole(row.original)}
+                  >
+                    删除
+                  </UButton>
+                ),
+                footer: ({ close }: { close: () => void }) => (
+                  <div class="flex items-center gap-2">
+                    <UButton label="Cancel" variant="outline" onClick={close} />
+                    <UButton label="Submit" />
+                  </div>
+                ),
+                // body: () => <Placeholder class="h-48" />,
+              }}
+            </UModal>
           </div>
         ),
       },

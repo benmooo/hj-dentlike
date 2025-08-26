@@ -164,7 +164,7 @@ export default defineComponent({
         cell: ({ row }) => {
           const color = chargeStatusColorMap[row.getValue('chargeStatus') as 'success']
           return (
-            <UBadge class="capitalize" variant="subtle" color={color as 'success'}>
+            <UBadge class="capitalize" variant="soft" color={color as 'success'}>
               {row.getValue('chargeStatus')}
             </UBadge>
           )

@@ -197,7 +197,7 @@ export default defineComponent({
             leadingIcon={row.original.status === '在用' ? 'i-lucide-circle-check' : 'i-lucide-x'}
             size="md"
             color={row.original.status === '在用' ? 'success' : 'error'}
-            variant="subtle"
+            variant="soft"
           >
             {row.original.status}
           </UBadge>

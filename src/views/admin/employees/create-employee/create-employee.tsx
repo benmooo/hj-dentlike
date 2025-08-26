@@ -142,15 +142,14 @@ export default defineComponent({
             <div class="flex gap-2 mt-6">
               <UButton
                 variant="outline"
-                color="error"
                 size="lg"
                 onClick={handleCancel}
                 class="flex-1"
               >
-                取消
+                <span class="mx-auto">取消</span>
               </UButton>
               <UButton type="submit" color="primary" size="lg" class="flex-1">
-                保存
+                <span class="mx-auto">保存</span>
               </UButton>
             </div>
           </UForm>
