@@ -179,7 +179,7 @@ const router = createRouter({
         requiresAuth: true,
         layout: layoutWithSidebar,
       },
-      component: () => import('../views/admin/create-employee/create-employee'),
+      component: () => import('../views/admin/employees/create-employee/create-employee'),
     },
     {
       path: '/admin/doctors',
@@ -197,7 +197,25 @@ const router = createRouter({
         requiresAuth: true,
         layout: layoutWithSidebar,
       },
-      component: () => import('../views/admin/create-doctor/create-doctor'),
+      component: () => import('../views/admin/doctors/create-doctor/create-doctor'),
+    },
+    {
+      path: '/admin/roles',
+      name: 'admin-roles',
+      meta: {
+        requiresAuth: true,
+        layout: layoutWithSidebar,
+      },
+      component: () => import('../views/admin/roles/roles'),
+    },
+    {
+      path: '/admin/roles/create',
+      name: 'admin-roles-create',
+      meta: {
+        requiresAuth: true,
+        layout: layoutWithSidebar,
+      },
+      component: () => import('../views/admin/roles/create-rule/create-rule'),
     },
 
     // 404 page

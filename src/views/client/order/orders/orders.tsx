@@ -128,36 +128,6 @@ export default defineComponent({
       已完成: 'bg-green-500',
     }
 
-    const tableSlots = {
-      'status-data': ({ row }: { row: (typeof orders)[0] }) => (
-        <div class="flex items-center">
-          <span
-            class={`h-2.5 w-2.5 rounded-full mr-2 ${statusColorMap[row.status] || 'bg-gray-400'}`}
-          ></span>
-          <span>{row.status}</span>
-        </div>
-      ),
-      'actions-data': ({ row }: { row: (typeof orders)[0] }) => (
-        <div class="flex items-center gap-1">
-          <UButton variant="link" color="primary" size="xs">
-            查看
-          </UButton>
-          <UButton variant="link" color="secondary" size="xs">
-            进度
-          </UButton>
-          <UButton variant="link" color="warning" size="xs">
-            物流
-          </UButton>
-        </div>
-      ),
-      'toothPosition-data': ({ row }: { row: (typeof orders)[0] }) => (
-        <div class="border-l border-gray-600 pl-4 h-6 flex items-center">{row.toothPosition}</div>
-      ),
-      'remarks-data': ({ row }: { row: (typeof orders)[0] }) => (
-        <div class="border-l border-gray-600 pl-4 h-6 flex items-center">{row.remarks}</div>
-      ),
-    }
-
     return () => (
       <div>
         {/* Filters */}

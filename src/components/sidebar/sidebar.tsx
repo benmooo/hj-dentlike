@@ -101,6 +101,11 @@ const sidebarItems: NavigationMenuItem[][] = [
       icon: 'i-healthicons-doctor',
       to: '/admin/doctors',
     },
+    {
+      label: 'Roles',
+      icon: 'i-lucide-shield-user',
+      to: '/admin/roles',
+    },
   ],
   [
     {
