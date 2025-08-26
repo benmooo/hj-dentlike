@@ -215,7 +215,17 @@ const router = createRouter({
         requiresAuth: true,
         layout: layoutWithSidebar,
       },
-      component: () => import('../views/admin/roles/create-rule/create-rule'),
+      component: () => import('../views/admin/roles/create-role/create-role'),
+    },
+
+    {
+      path: '/admin/roles/:id',
+      name: 'admin-role-detail',
+      meta: {
+        requiresAuth: true,
+        layout: layoutWithSidebar,
+      },
+      component: () => import('../views/admin/roles/role-detail/role-detail'),
     },
 
     // 404 page
