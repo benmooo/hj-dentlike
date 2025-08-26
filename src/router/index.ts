@@ -228,6 +228,26 @@ const router = createRouter({
       component: () => import('../views/admin/roles/role-detail/role-detail'),
     },
 
+    {
+      path: '/admin/products',
+      name: 'admin-products',
+      meta: {
+        requiresAuth: true,
+        layout: layoutWithSidebar,
+      },
+      component: () => import('../views/admin/products/products'),
+    },
+
+    {
+      path: '/admin/products/create',
+      name: 'admin-products-create',
+      meta: {
+        requiresAuth: true,
+        layout: layoutWithSidebar,
+      },
+      component: () => import('../views/admin/products/create-product/create-product'),
+    },
+
     // 404 page
     { path: '/:pathMatch(.*)', component: () => import('../views/exception/404') },
   ],

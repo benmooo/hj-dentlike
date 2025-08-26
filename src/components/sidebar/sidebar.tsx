@@ -92,6 +92,11 @@ const sidebarItems: NavigationMenuItem[][] = [
   // admin routes
   [
     {
+      label: 'Products',
+      icon: 'i-lucide-boxes',
+      to: '/admin/products',
+    },
+    {
       label: 'Employees',
       icon: 'i-lucide-user-pen',
       to: '/admin/employees',
