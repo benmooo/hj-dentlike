@@ -161,6 +161,15 @@ const router = createRouter({
       },
       component: () => import('../views/client/user/settings/settings'),
     },
+    {
+      path: '/client/user/practices/create',
+      name: 'client-user-practices-create',
+      meta: {
+        requiresAuth: true,
+        layout: layoutWithSidebar,
+      },
+      component: () => import('../views/client/user/practices/create-practice/create-practice'),
+    },
 
     // ------------ admin ------------
     {

@@ -2,13 +2,7 @@ import { defineComponent, ref, reactive } from 'vue'
 import UCard from '@nuxt/ui/components/Card.vue'
 import UButton from '@nuxt/ui/components/Button.vue'
 import UTable from '@nuxt/ui/components/Table.vue'
-import UModal from '@nuxt/ui/components/Modal.vue'
-import UInput from '@nuxt/ui/components/Input.vue'
-import USelect from '@nuxt/ui/components/Select.vue'
-import UTextarea from '@nuxt/ui/components/Textarea.vue'
-import URadioGroup from '@nuxt/ui/components/RadioGroup.vue'
 import UAvatar from '@nuxt/ui/components/Avatar.vue'
-// import UIcon from '@nuxt/ui/components/Icon.vue'
 
 export default defineComponent({
   name: 'UserProfile',
@@ -164,7 +158,7 @@ export default defineComponent({
                 <UButton icon="i-lucide-building" size="sm" />
                 <h2 class="text-xl font-semibold">诊所信息</h2>
               </div>
-              <UButton color="primary" onClick={openAddClinicModal} icon="heroicons:plus">
+              <UButton color="primary" icon="heroicons:plus" to="/client/user/practices/create">
                 添加诊所
               </UButton>
             </div>
@@ -197,73 +191,6 @@ export default defineComponent({
         </div>
 
         {/* Add Clinic Modal */}
-        <UModal v-model={isAddClinicModalOpen.value} defaultOpen prevent-close>
-          {{
-            default: () => (
-              <UCard class="max-w-md mx-auto">
-                {{
-                  header: () => (
-                    <div class="flex items-center justify-between">
-                      <h3 class="text-lg font-semibold">添加门诊</h3>
-                      <UButton
-                        color="secondary"
-                        variant="ghost"
-                        icon="heroicons:x-mark"
-                        onClick={closeAddClinicModal}
-                      />
-                    </div>
-                  ),
-                  default: () => (
-                    <div class="space-y-4">
-                      <div class="space-y-2">
-                        <label class="text-sm font-medium">门诊名称</label>
-                        <UInput v-model={clinicForm.name} placeholder="门诊名称" />
-                      </div>
-
-                      <div class="space-y-2">
-                        <label class="text-sm font-medium">国家/地区</label>
-                        <USelect
-                          v-model={clinicForm.country}
-                          items={countryOptions.value}
-                          placeholder="国家地区"
-                        />
-                      </div>
-
-                      <div class="space-y-2">
-                        <label class="text-sm font-medium">详细地址</label>
-                        <UTextarea
-                          v-model={clinicForm.address}
-                          placeholder="请填写详细地址"
-                          rows={3}
-                        />
-                      </div>
-
-                      <div class="space-y-2">
-                        <label class="text-sm font-medium">邮政编码</label>
-                        <UInput v-model={clinicForm.postalCode} placeholder="邮政编码" />
-                      </div>
-
-                      <div class="space-y-2">
-                        <label class="text-sm font-medium">状态</label>
-                        <URadioGroup v-model={clinicForm.status} items={statusOptions.value} />
-                      </div>
-                    </div>
-                  ),
-                  footer: () => (
-                    <div class="flex justify-end gap-3">
-                      <UButton color="secondary" variant="ghost" onClick={closeAddClinicModal}>
-                        取消
-                      </UButton>
-                      <UButton color="primary" onClick={saveClinic}>
-                        保存
-                      </UButton>
-                    </div>
-                  ),
-                }}
-              </UCard>
-            ),
-          }}
-        </UModal>
       </div>
     )
   },
