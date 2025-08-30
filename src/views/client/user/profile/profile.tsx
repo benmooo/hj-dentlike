@@ -111,7 +111,7 @@ export default defineComponent({
               backgroundImage: `url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSIyNTYiIHZpZXdCb3g9IjAgMCAxMjAwIDI1NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgo8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojNGY0NmU1O3N0b3Atb3BhY2l0eTowLjMiIC8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzA2YjZkNDtzdG9wLW9wYWNpdHk6MC41IiAvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+CjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjI1NiIgZmlsbD0idXJsKCNncmFkaWVudCkiLz4KPHBhdGggZD0iTTAgMjU2TDE1MCAyMDBMMzAwIDE4MEw0NTAgMTUwTDYwMCAxMjBMNzUwIDEwMEw5MDAgMTMwTDEwNTAgMTYwTDEyMDAgMTkwVjI1NkgwWiIgZmlsbD0iIzFmMjkzNyIgZmlsbC1vcGFjaXR5PSIwLjgiLz4KPHBhdGggZD0iTTAgMjU2TDEyMCAyMjBMMjQwIDE4MEwzNjAgMTYwTDQ4MCAxNDBMNjAwIDEwMEw3MjAgMTIwTDg0MCA4MEw5NjAgMTAwTDEwODAgMTMwTDEyMDAgMTUwVjI1NkgwWiIgZmlsbD0iIzM3NDE1MSIgZmlsbC1vcGFjaXR5PSIwLjYiLz4KPC9zdmc+')`,
             }}
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+          <div class="absolute inset-0 bg-gradient-to-t from-secondary/80 via-transparent to-transparent" />
 
           {/* User Info Overlay */}
           <div class="absolute bottom-8 left-8 flex items-end gap-6">
@@ -127,9 +127,9 @@ export default defineComponent({
           </div>
         </div>
 
-        <div class="max-w-7xl mx-auto p-6 space-y-6">
+        <div class="space-y-6">
           {/* Personal Information Card */}
-          <UCard class="shadow-sm">
+          <UCard>
             <div class="flex items-center gap-3 mb-6">
               <UButton icon="i-lucide-user" size="sm" />
               <h2 class="text-xl font-semibold">个人信息</h2>
