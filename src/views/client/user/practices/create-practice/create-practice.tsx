@@ -34,7 +34,7 @@ export default defineComponent({
       country: '',
       address: '',
       postalCode: '',
-      status: false,
+      status: true,
     })
 
     const countryOptions = [
@@ -117,11 +117,11 @@ export default defineComponent({
                   orientation="horizontal"
                 />*/}
                 <USwitch
-                  color="error"
+                  // color="success"
                   v-model={state.status}
                   unchecked-icon="i-lucide-x"
                   checked-icon="i-lucide-check"
-                  label="禁用"
+                  label="启用"
                 />
               </UFormField>
             </div>

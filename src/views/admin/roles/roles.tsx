@@ -79,10 +79,6 @@ export default defineComponent({
       console.log('编辑权限:', role)
     }
 
-    const handleAddRole = () => {
-      toast.add({ title: 'Unavailable' })
-    }
-
     const handleQuery = () => {
       console.log('查询:', filters)
     }
@@ -198,7 +194,7 @@ export default defineComponent({
 
         {/* Add Role Button */}
         <div class="mb-4">
-          <UButton onClick={handleAddRole} icon="i-heroicons-plus-circle-solid" color="primary">
+          <UButton to="/admin/roles/create" icon="i-heroicons-plus-circle-solid" color="primary">
             新增职务
           </UButton>
         </div>
