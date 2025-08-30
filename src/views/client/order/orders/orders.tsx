@@ -2,7 +2,7 @@ import { defineComponent, reactive } from 'vue'
 import UButton from '@nuxt/ui/components/Button.vue'
 import UInput from '@nuxt/ui/components/Input.vue'
 import USelect from '@nuxt/ui/components/Select.vue'
-import UTable from '@nuxt/ui/components/Table.vue'
+import UTable, { type TableColumn } from '@nuxt/ui/components/Table.vue'
 import UPagination from '@nuxt/ui/components/Pagination.vue'
 
 export default defineComponent({
@@ -21,17 +21,42 @@ export default defineComponent({
     const statusOptions = ['全部', '待确认', '待审核', '进行中', '已完成']
     const caseTypeOptions = ['全部', '冠', '嵌体/高嵌', '贴面', '桥体']
 
-    const columns = [
-      { key: 'actions', label: '操作' },
-      { key: 'doctorName', label: '医生姓名' },
-      { key: 'patientName', label: '患者姓名' },
-      { key: 'orderNumber', label: '订单号' },
-      { key: 'status', label: '订单状态' },
-      { key: 'caseType', label: '病例类型' },
-      { key: 'dueDate', label: '戴牙日期' },
-      { key: 'orderDate', label: '录单时间' },
-      { key: 'toothPosition', label: '牙位' },
-      { key: 'remarks', label: '备注' },
+    const columns: TableColumn<Order>[] = [
+      { accessorKey: 'id' },
+      { accessorKey: 'doctorName' },
+      { accessorKey: 'patientName' },
+      { accessorKey: 'orderNumber' },
+      { accessorKey: 'status' },
+      { accessorKey: 'caseType' },
+      { accessorKey: 'dueDate' },
+      { accessorKey: 'orderDate' },
+      { accessorKey: 'toothPosition' },
+      { accessorKey: 'remarks' },
+      {
+        header: 'Actions',
+        cell: ({ row }) => (
+          <div class="flex gap-2">
+            <UButton
+              size="sm"
+              variant="outline"
+              color="info"
+              icon="i-lucide-info"
+              to={`/client/orders/${row.original.id}`}
+            >
+              查看
+            </UButton>
+            <UButton
+              size="sm"
+              variant="outline"
+              color="primary"
+              icon="i-lucide-message-circle-more"
+              to={`/client/orders/${row.original.id}/chat`}
+            >
+              沟通
+            </UButton>
+          </div>
+        ),
+      },
     ]
 
     const orders = [
@@ -176,7 +201,7 @@ export default defineComponent({
             </UButton>
           </div>
 
-          <UTable data={orders} />
+          <UTable data={orders} columns={columns} />
           <div class="flex justify-between items-center mt-4">
             <p class="text-sm text-gray-400">显示 1-7, 共 {orders.length} 条数据</p>
             <UPagination total={100} sibling-count={1} show-edges />
@@ -186,3 +211,16 @@ export default defineComponent({
     )
   },
 })
+
+export type Order = {
+  id: number
+  doctorName: string
+  patientName: string
+  orderNumber: string
+  status: string
+  caseType: string
+  dueDate: string
+  orderDate: string
+  toothPosition: string
+  remarks: string
+}

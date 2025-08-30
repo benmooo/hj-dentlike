@@ -272,6 +272,7 @@ export default defineComponent({
           <div class="flex space-x-2">
             <div class="flex-1">
               <UTextarea
+                autofocus
                 ref="inputRef"
                 v-model={this.inputValue}
                 placeholder={this.placeholder}

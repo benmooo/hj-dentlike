@@ -125,6 +125,16 @@ const router = createRouter({
     },
 
     {
+      path: '/client/orders/:id/chat',
+      name: 'client-order-detail-chat',
+      meta: {
+        requiresAuth: true,
+        layout: layoutWithSidebar,
+      },
+      component: () => import('../views/client/order/order-chat/order-chat'),
+    },
+
+    {
       path: '/client/finance/dashboard',
       name: 'client-finance-dashboard',
       meta: {

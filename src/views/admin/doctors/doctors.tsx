@@ -99,31 +99,6 @@ export default defineComponent({
       doctor.accountStatus = !doctor.accountStatus
     }
 
-    const tableSlots = {
-      'actions-data': ({ row }: { row: (typeof doctors)[0] }) => (
-        <div class="flex items-center gap-1">
-          <UButton variant="solid" color="primary" size="xs">
-            编辑
-          </UButton>
-          <UButton variant="solid" color="warning" size="xs">
-            删除
-          </UButton>
-          <UButton variant="solid" color="success" size="xs">
-            修改密码
-          </UButton>
-        </div>
-      ),
-      'accountStatus-data': ({ row }: { row: (typeof doctors)[0] }) => (
-        <UToggle v-model={row.accountStatus} onUpdate:modelValue={() => handleToggleStatus(row)} />
-      ),
-      'remarks-data': ({ row }: { row: (typeof doctors)[0] }) => <span>{row.remarks || '-'}</span>,
-      'clinicAddress-data': ({ row }: { row: (typeof doctors)[0] }) => (
-        <div class="max-w-xs truncate" title={row.clinicAddress}>
-          {row.clinicAddress}
-        </div>
-      ),
-    }
-
     const router = useRouter()
     const onCreateDoctor = () => {
       router.push('/admin/doctors/create')
@@ -158,7 +133,7 @@ export default defineComponent({
 
         {/* Doctors Table */}
         <div>
-          <UTable data={doctors} v-slots={tableSlots} />
+          <UTable data={doctors} />
 
           <div class="flex justify-between items-center mt-4">
             <p class="text-sm text-muted-foreground">
