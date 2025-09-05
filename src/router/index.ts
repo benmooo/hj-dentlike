@@ -273,8 +273,9 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to) => {
-  const { refreshAccessToken, accessToken } = useAuthStore()
-  if (to.meta.requiresAuth && !accessToken) {
+  const { isLoggedIn } = useAuthStore()
+  if (to.meta.requiresAuth && !isLoggedIn) {
+    // return { name: 'login' }
   }
 })
 

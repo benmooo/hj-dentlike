@@ -1,34 +1,20 @@
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
-import TE from 'fp-ts/lib/TaskEither'
-import E from 'fp-ts/lib/Either'
-import { pipe } from 'fp-ts/lib/function'
-import { refreshToken } from '@/api/auth'
-import { identity } from 'fp-ts'
 
 export const useAuthStore = defineStore('auth', () => {
+  const user = ref(null as { id: string; name: string; email: string } | null)
   const accessToken = ref<string | null>(null)
+  const isLoggedIn = computed(() => accessToken.value !== null)
 
-  function setAccessToken(token: string) {
+  function login(userData: { id: string; name: string; email: string }, token: string) {
+    user.value = userData
     accessToken.value = token
   }
 
-  function clearAccessToken() {
+  function logout() {
+    user.value = null
     accessToken.value = null
   }
 
-  const refreshAccessToken = () =>
-    pipe(
-      TE.tryCatch(async () => await refreshToken(), E.toError),
-      TE.chainEitherK((data: { accessToken: string }) => {
-        setAccessToken(data.accessToken)
-        return E.right(data)
-      }),
-      TE.orElse((error) => {
-        clearAccessToken()
-        return TE.left(error)
-      }),
-    )
-
-  return { accessToken, setAccessToken, clearAccessToken, refreshAccessToken }
+  return { isLoggedIn, user, authToken: accessToken, login, logout }
 })
