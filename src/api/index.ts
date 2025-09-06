@@ -6,9 +6,21 @@ import { useAuthStore } from '@/stores/auth'
 import { jwtDecode } from 'jwt-decode'
 import { identity } from 'fp-ts'
 
-const baseURL = 'https://api.example.com/api/v1'
+const baseURL = 'http://192.168.1.199:8050/api'
 
 const api = axios.create({ baseURL })
+
+export const login = async (email: string, password: string) => {
+  pipe(
+    TE.tryCatch(async () => {
+      const { data } = await api.post('/user/login', { loginName: email, password })
+      return data
+    }, E.toError),
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    TE.filterOrElse((data) => (data as any).success, E.toError),
+  )
+}
 
 // api.interceptors.request.use(async (config) => {
 //   const { accessToken, refreshAccessToken } = useAuthStore()
