@@ -2,6 +2,9 @@ import { defineComponent, ref, reactive, computed, type ComputedRef } from 'vue'
 import URadioGroup from '@nuxt/ui/components/RadioGroup.vue'
 import UButton from '@nuxt/ui/components/Button.vue'
 import UFormGroup from '@nuxt/ui/components/FormField.vue'
+import UModal from '@nuxt/ui/components/Modal.vue'
+
+import MaterialType from '@/components/order/create-order/material'
 
 // Import tooth images
 import tooth11 from '@/assets/image/tooth/11.png'
@@ -38,6 +41,9 @@ import tooth35Miss from '@/assets/image/tooth/35_miss.png'
 import tooth36Miss from '@/assets/image/tooth/36_miss.png'
 import tooth37Miss from '@/assets/image/tooth/37_miss.png'
 import tooth38Miss from '@/assets/image/tooth/38_miss.png'
+import Placeholder from '@/components/common/placeholder'
+import ItemType from './item-type'
+import Shade from './shade'
 
 const toothImages = {
   11: tooth11,
@@ -193,6 +199,8 @@ export default defineComponent({
       if (selectedTeeth.has(toothId)) {
         selectedTeeth.delete(toothId)
       } else {
+        open.value = true
+
         const tooth = teethMap.value.find((t) => t.id === toothId)
         if (!tooth) return
 
@@ -205,6 +213,9 @@ export default defineComponent({
         }
       }
     }
+
+    // modal open
+    const open = ref(false)
 
     const resetSelection = () => {
       selectedTeeth.clear()
@@ -326,7 +337,30 @@ export default defineComponent({
             {/* Upper Right Quadrant (18-11 → 8-1) */}
             <div class="flex gap-2">
               {upperTeethRight.value.map((tooth) => (
-                <ToothComponent key={tooth.id} tooth={tooth} />
+                <UModal
+                  // fullscreen
+                  v-model={open.value}
+                  title="选择类别、材料、牙色"
+                  ui={{ footer: 'justify-end', content: 'min-w-5xl' }}
+                >
+                  {{
+                    default: () => <ToothComponent key={tooth.id} tooth={tooth} />,
+                    footer: ({ close }: { close: () => void }) => (
+                      <div class="flex items-center gap-2">
+                        <UButton label="Reset" variant="link" />
+                        <UButton label="Cancel" variant="outline" onClick={close} />
+                        <UButton label="Confirm" />
+                      </div>
+                    ),
+                    body: () => (
+                      <div class="flex flex-col space-y-6">
+                        <ItemType />
+                        <MaterialType />
+                        <Shade />
+                      </div>
+                    ),
+                  }}
+                </UModal>
               ))}
             </div>
 
@@ -336,7 +370,30 @@ export default defineComponent({
             {/* Upper Left Quadrant (21-28 → 1-8) */}
             <div class="flex gap-2">
               {upperTeethLeft.value.map((tooth) => (
-                <ToothComponent key={tooth.id} tooth={tooth} />
+                <UModal
+                  // fullscreen
+                  v-model={open.value}
+                  title="选择类别、材料、牙色"
+                  ui={{ footer: 'justify-end', content: 'min-w-5xl' }}
+                >
+                  {{
+                    default: () => <ToothComponent key={tooth.id} tooth={tooth} />,
+                    footer: ({ close }: { close: () => void }) => (
+                      <div class="flex items-center gap-2">
+                        <UButton label="Reset" variant="link" />
+                        <UButton label="Cancel" variant="outline" onClick={close} />
+                        <UButton label="Confirm" />
+                      </div>
+                    ),
+                    body: () => (
+                      <div class="flex flex-col space-y-6">
+                        <ItemType />
+                        <MaterialType />
+                        <Shade />
+                      </div>
+                    ),
+                  }}
+                </UModal>
               ))}
             </div>
           </div>
@@ -349,7 +406,30 @@ export default defineComponent({
             {/* Lower Right Quadrant (48-41 → 8-1) */}
             <div class="flex gap-2">
               {lowerTeethRight.value.map((tooth) => (
-                <ToothComponent key={tooth.id} tooth={tooth} />
+                <UModal
+                  // fullscreen
+                  v-model={open.value}
+                  title="选择类别、材料、牙色"
+                  ui={{ footer: 'justify-end', content: 'min-w-5xl' }}
+                >
+                  {{
+                    default: () => <ToothComponent key={tooth.id} tooth={tooth} />,
+                    footer: ({ close }: { close: () => void }) => (
+                      <div class="flex items-center gap-2">
+                        <UButton label="Reset" variant="link" />
+                        <UButton label="Cancel" variant="outline" onClick={close} />
+                        <UButton label="Confirm" />
+                      </div>
+                    ),
+                    body: () => (
+                      <div class="flex flex-col space-y-6">
+                        <ItemType />
+                        <MaterialType />
+                        <Shade />
+                      </div>
+                    ),
+                  }}
+                </UModal>
               ))}
             </div>
 
@@ -359,7 +439,30 @@ export default defineComponent({
             {/* Lower Left Quadrant (31-38 → 1-8) */}
             <div class="flex gap-2">
               {lowerTeethLeft.value.map((tooth) => (
-                <ToothComponent key={tooth.id} tooth={tooth} />
+                <UModal
+                  // fullscreen
+                  v-model={open.value}
+                  title="选择类别、材料、牙色"
+                  ui={{ footer: 'justify-end', content: 'min-w-5xl' }}
+                >
+                  {{
+                    default: () => <ToothComponent key={tooth.id} tooth={tooth} />,
+                    footer: ({ close }: { close: () => void }) => (
+                      <div class="flex items-center gap-2">
+                        <UButton label="Reset" variant="link" />
+                        <UButton label="Cancel" variant="outline" onClick={close} />
+                        <UButton label="Confirm" />
+                      </div>
+                    ),
+                    body: () => (
+                      <div class="flex flex-col space-y-6">
+                        <ItemType />
+                        <MaterialType />
+                        <Shade />
+                      </div>
+                    ),
+                  }}
+                </UModal>
               ))}
             </div>
           </div>

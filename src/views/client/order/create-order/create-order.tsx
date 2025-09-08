@@ -86,18 +86,18 @@ export default defineComponent({
         title: 'Tooth Position',
         description: 'Select tooth position',
       },
-      {
-        title: 'Item Type',
-        description: 'Select item type',
-      },
-      {
-        title: 'Material',
-        description: 'Select material',
-      },
-      {
-        title: 'Shade',
-        description: 'Select shade',
-      },
+      // {
+      //   title: 'Item Type',
+      //   description: 'Select item type',
+      // },
+      // {
+      //   title: 'Material',
+      //   description: 'Select material',
+      // },
+      // {
+      //   title: 'Shade',
+      //   description: 'Select shade',
+      // },
       {
         title: 'Occlusal Space and Crown Type',
         description: 'Select occlusal space and crown type',
@@ -256,15 +256,15 @@ export default defineComponent({
             )}
             {/* Tooth Position Step */}
             {step.value === 1 && <ToothPosition />}
-            {step.value === 2 && <ItemType />}
+            {/*{step.value === 2 && <ItemType />}
             {step.value === 3 && <MaterialType />}
-            {step.value === 4 && <Shade />}
-            {step.value === 5 && <OcclusalSpace />}
-            {step.value === 6 && <Implant />}
-            {step.value === 7 && <RetentionMethodAndOther />}
-            {step.value === 8 && <SpecialRequirements />}
-            {step.value === 9 && <Attachments />}
-            {step.value === 10 && <OrderDetail order={state} />}
+            {step.value === 4 && <Shade />}*/}
+            {step.value === 2 && <OcclusalSpace />}
+            {step.value === 3 && <Implant />}
+            {step.value === 4 && <RetentionMethodAndOther />}
+            {step.value === 5 && <SpecialRequirements />}
+            {step.value === 6 && <Attachments />}
+            {step.value === 7 && <OrderDetail order={state} />}
 
             {/* Placeholder for other steps */}
             {step.value > 10 && (

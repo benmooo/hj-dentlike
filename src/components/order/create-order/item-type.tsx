@@ -95,7 +95,7 @@ export default defineComponent({
         </UFormGroup>
 
         {/* Navigation Buttons */}
-        <div class="flex justify-center gap-4 mt-8">
+        {/*<div class="flex justify-center gap-4 mt-8">
           <UButton label="Return" size="lg" variant="ghost" onClick={handlePrevStep} />
           <UButton
             label="Next Step"
@@ -103,7 +103,7 @@ export default defineComponent({
             onClick={handleNextStep}
             disabled={!selectedItemType.value} // Disable if no item type is selected
           />
-        </div>
+        </div>*/}
       </div>
     )
   },

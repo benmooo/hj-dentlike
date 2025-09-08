@@ -271,7 +271,7 @@ export default defineComponent({
         </div>
 
         {/* Navigation Buttons */}
-        <div class="flex justify-center gap-4 mt-8">
+        {/*<div class="flex justify-center gap-4 mt-8">
           <UButton label="返回 (Return)" size="lg" variant="ghost" onClick={onPrev} />
           <UButton
             label="下一步 (Next Step)"
@@ -279,7 +279,7 @@ export default defineComponent({
             disabled={isNextDisabled.value}
             onClick={onNext}
           />
-        </div>
+        </div>*/}
       </div>
     )
   },
