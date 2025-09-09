@@ -42,15 +42,13 @@ export default defineComponent({
           {/* Decorative background shapes */}
           <div class="absolute top-0 left-0 -translate-x-1/4 -translate-y-1/4 w-96 h-96 rounded-full bg-primary-100 dark:bg-primary-900/50 opacity-50" />
           <div class="absolute bottom-0 right-0 translate-x-1/4 translate-y-1/4 w-96 h-96 rounded-full bg-primary-100 dark:bg-primary-900/50 opacity-50" />
+          <div class="absolute top-8 left-8 text-2xl font-bold">LOGO</div>
 
-          <div class="max-w-md z-10">
+          <div class="min-w-md z-10">
             <h2 class="text-4xl font-bold text-gray-900 dark:text-white">
-              Your Smile, Our Passion, {t('app.name')}
+              {t('loginPage.headline')}
             </h2>
-            <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
-              Access your personalized dental care plan and connect with top specialists. We're
-              committed to providing you with the best dental experience.
-            </p>
+            <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">{t('loginPage.subheading')}</p>
           </div>
         </div>
 

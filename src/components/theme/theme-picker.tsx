@@ -81,7 +81,7 @@ export default defineComponent({
     const state = reactive({
       primaryColor: appConfig.ui.colors.primary || 'lime',
       neutralColor: appConfig.ui.colors.neutral || 'zinc',
-      radius: document.documentElement.style.getPropertyValue('--ui-radius') || '0rem',
+      radius: localStorage.getItem('nuxtui-radius') || '0.25rem',
       themeMode: colorMode.value || 'auto',
     })
 

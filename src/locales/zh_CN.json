@@ -19,7 +19,9 @@
     "forgotPassword": "忘记密码？",
     "loginButton": "登录",
     "haveNoAccount": "没有账号？",
-    "signUpLink": "注册"
+    "signUpLink": "注册",
+    "headline": "简单的Headline",
+    "subheading": "简单的Subheading说明"
   },
 
   "signupPage": {

@@ -18,7 +18,9 @@
     "forgotPassword": "Forgot Password?",
     "loginButton": "Sign In",
     "haveNoAccount": "Don't have an account?",
-    "signUpLink": "Sign Up"
+    "signUpLink": "Sign Up",
+    "headline": "A Short Headline",
+    "subheading": "A short description of the app"
   },
   "signupPage": {
     "sidePanelTitle": "Join the Future of Dental Care",
