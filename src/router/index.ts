@@ -15,11 +15,12 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('../views/home'),
+      redirect: '/auth/login',
       meta: {
         requiresAuth: false,
         layout: defaultLayout,
       },
+      // component: () => import('../views/home'),
     },
     {
       path: '/about',

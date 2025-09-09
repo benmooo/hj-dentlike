@@ -1,7 +1,7 @@
 import { defineComponent, reactive } from 'vue'
 import UCard from '@nuxt/ui/components/Card.vue'
 import UButton from '@nuxt/ui/components/Button.vue'
-import { useColorMode } from '@vueuse/core'
+import { useColorMode, useStorage } from '@vueuse/core'
 
 const PRIMARY_COLORS = [
   { name: 'Black', value: 'black' },
@@ -88,16 +88,19 @@ export default defineComponent({
     const setPrimaryColor = (color: string) => {
       appConfig.ui.colors.primary = color
       state.primaryColor = color
+      localStorage.setItem('nuxtui-primary-color', color)
     }
 
     const setNeutralColor = (color: string) => {
       appConfig.ui.colors.neutral = color
       state.neutralColor = color
+      localStorage.setItem('nuxtui-neutral-color', color)
     }
 
     const setRadius = (radius: string) => {
       document.documentElement.style.setProperty('--ui-radius', radius)
       state.radius = radius
+      localStorage.setItem('nuxtui-radius', radius)
     }
 
     const setThemeMode = (mode: 'light' | 'dark' | 'auto') => {

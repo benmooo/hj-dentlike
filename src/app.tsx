@@ -6,6 +6,7 @@ import {
   Transition,
   type VNode,
   type Component,
+  onMounted,
 } from 'vue'
 import UApp from '@nuxt/ui/components/App.vue'
 import { defaultLayout } from './router'
@@ -16,6 +17,7 @@ import { useI18n } from 'vue-i18n'
 import ThemePickerPopover from './components/theme/theme-picker-popover'
 import Placeholder from './components/common/placeholder'
 import ErrorBoundary from './components/common/error-boundary'
+import { useUiPreferences } from './hooks/use-ui-preferences'
 
 // Cache for dynamically loaded layout components.
 // This prevents the layout component from being recreated on every route change,
@@ -35,6 +37,9 @@ const loadLayoutComponent = (layoutName: string) => {
 export default defineComponent({
   name: 'App',
   setup() {
+    // Initialize UI preferences
+    useUiPreferences()
+
     const route = useRoute()
     const { locale } = useI18n()
 

@@ -19,7 +19,7 @@ export default defineConfig({
       // prefix: 'Nuxt',
       ui: {
         colors: {
-          primary: 'lime',
+          primary: 'blue',
           neutral: 'zinc',
         },
       },

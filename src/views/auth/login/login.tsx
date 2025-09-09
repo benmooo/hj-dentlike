@@ -124,17 +124,17 @@ export default defineComponent({
 
               <div class="my-6 flex items-center">
                 <div class="w-full border-t border-muted" />
-                <div class="text-sm px-2 text-muted flex-shrink-0">Or continue with</div>
+                <div class="text-sm px-2 text-muted flex-shrink-0">Or</div>
                 <div class="w-full border-t border-muted" />
               </div>
 
-              <UButton
+              {/*<UButton
                 icon="i-logos-google-icon"
                 label="Sign in with Google"
                 variant="outline"
                 block
                 size="lg"
-              />
+              />*/}
             </UForm>
 
             <p class="mt-8 text-sm text-center text-dimmed">
